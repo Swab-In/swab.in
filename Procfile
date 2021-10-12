@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: gunicorn swabIn.wsgi
+web: gunicorn project_pbp.wsgi
