@@ -30,8 +30,7 @@ Membantu pemerintah dalam melakukan edukasi terkait vaksin maupun membantu masya
 |Informasi Vaksin|Informasi tentang vaksin, jenis vaksin, efikasi vaksin, serta efek samping vaksin|
 |Tentang|About us, contact us, terdapat form saran dan masukan|
 
-**User Persona**
+**User Persona** <br>
 Dalam membangun website Swab.In ini, kami membuat 3 user persona: <br>
-```Persona 1
-```
+
 
