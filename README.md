@@ -29,3 +29,9 @@ Membantu pemerintah dalam melakukan edukasi terkait vaksin maupun membantu masya
 |Forum Diskusi Tempat Swab| Diskusi dan komentar user mengenai tempat swab, user juga bisa saling me-reply komentar satu sama lain |
 |Informasi Vaksin|Informasi tentang vaksin, jenis vaksin, efikasi vaksin, serta efek samping vaksin|
 |Tentang|About us, contact us, terdapat form saran dan masukan|
+
+**User Persona**
+Dalam membangun website Swab.In ini, kami membuat 3 user persona: <br>
+```Persona 1
+```
+
