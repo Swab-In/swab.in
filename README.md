@@ -20,4 +20,12 @@ Latar Belakang :
 Manfaat Aplikasi Web Swab.In :
 	Membantu pemerintah dalam melakukan edukasi terkait vaksin maupun membantu masyarakat yang ingin melakukan pemeriksaan covid-19 dengan cara memberikan ruang diskusi terkait tempat pemeriksaan covid-19 sehingga pengguna dapat membantu satu sama lain terkait informasi suatu tempat covid-19.
 
---
+| Modul - Modul       | Penjelasan Modul |
+|:---------------------:|:------------------:|
+|Halaman Autentikasi  | Berisi form login dan register user                 |
+|Landing Page         | Berisi konten intro mengenai Swab.In dan informasi cara penggunaan website                                                     |
+|Daftar Tempat Swab overview (berupa list) |Berisi daftar tempat dan informasi singkat tempat swab, terdapat form (rekomendasi tempat pemeriksaan dari user) |
+|Informasi Detail Tempat Swab|Berisi informasi mengenai nama tempat, lokasi, fasilitas, jam buka tempat swab, dsb   |                                             
+|Forum Diskusi Tempat Swab| Diskusi dan komentar user mengenai tempat swab, user juga bisa saling me-reply komentar satu sama lain |
+|Informasi Vaksin|Informasi tentang vaksin, jenis vaksin, efikasi vaksin, serta efek samping vaksin|
+|Tentang|About us, contact us, terdapat form saran dan masukan|
