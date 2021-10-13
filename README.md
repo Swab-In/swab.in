@@ -32,5 +32,7 @@ Membantu pemerintah dalam melakukan edukasi terkait vaksin maupun membantu masya
 
 **User Persona** <br>
 Dalam membangun website Swab.In ini, kami membuat 3 user persona: <br>
-
+![](images/UserPersona_1.png)
+![](images/UserPersona_2.png)
+![](images/UserPersona_3.png)
 
