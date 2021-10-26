@@ -1,0 +1,3 @@
+$('.btn1').click(function(){
+  console.log("clicked")
+})
