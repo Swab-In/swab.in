@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 import swabIn.urls as swabIn
+import artikel as artikel
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(swabIn))
+    path('', include(swabIn)),
+    path('artikel', include(artikel))
 ]
