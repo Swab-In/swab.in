@@ -1,4 +1,4 @@
-from models import Komentar
+from .models import Komentar
 from django import forms
 
 class NoteForm(forms.ModelForm):

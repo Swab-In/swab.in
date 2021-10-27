@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from models import Komentar
+from .models import Komentar
 from .forms import NoteForm
 from django.http import HttpResponseRedirect
 

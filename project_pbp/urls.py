@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 import swabIn.urls as swabIn
-import artikel as artikel
+import artikel.urls as artikel
 
 urlpatterns = [
     path('admin/', admin.site.urls),
