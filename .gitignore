@@ -151,4 +151,5 @@ ENV/
 /lab-1/.idea/
 /lab-1/db.sqlite3/
 /lab-1/hello_name/migrations/*.py
+
 db.sqlite3
