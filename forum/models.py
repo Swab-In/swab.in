@@ -20,4 +20,4 @@ class Komentar(models.Model):
     )
     
     def __str__(self):
-        return "%s" % (self.komentar)
+        return "forum %s" % (self.forum_id.title)

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<head>
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'styles/detail_forum.css' %}" />
+    {% endblock css %}
+    {% block title %}
+    Forum | Detail
+    {% endblock title %}
+</head>
+
+{% block content %}
+<div>
+     {{ forum_detail.title }}
+    {{ forum_detail.message }}
+    {{ forum_detail.image }}
+    <!-- {% for k in komentar %}
+    <div>
+        {{ k.komentar }}
+    </div>
+    {% endfor %} -->
+</div>
+
+{% endblock content %}
