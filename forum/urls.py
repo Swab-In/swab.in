@@ -3,5 +3,4 @@ from .views import *
 
 urlpatterns = [
     path('', index, name='index'),
-    path('list', list, name='list'),
 ]
