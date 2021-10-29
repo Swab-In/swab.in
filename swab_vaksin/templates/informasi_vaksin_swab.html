@@ -50,7 +50,8 @@
                         {% csrf_token %}
                         {% for field in form%}
                         <div class='row mb-3 mx-4'>
-                          <textarea class='form-control' placeholder='Tuliskan pengalaman vaksin anda disini!' name='message'>{{form.pengalaman}}</textarea>
+                          {{form.pengalaman}}
+                          
                         </div>
                         {% endfor %}
                         <p id='inputForumId' class='visually-hidden'></p>
