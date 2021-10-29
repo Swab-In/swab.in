@@ -79,6 +79,11 @@ a.article-title:hover {
     font-size: 2.5rem;
 }
 
+.pagination {
+    margin-top: 20px;
+    position: absolute;
+}
+
 /* .btn-primary {
-    
+
 } */
