@@ -48,9 +48,11 @@
                     <div class='form'> 
                       <form method='POST' action='' id='addPengalamanForm'>
                         {% csrf_token %}
+                        {% for field in form%}
                         <div class='row mb-3 mx-4'>
-                          <textarea class='form-control' placeholder='Tuliskan pengalaman vaksin anda disini!' name='message'></textarea>
+                          <textarea class='form-control' placeholder='Tuliskan pengalaman vaksin anda disini!' name='message'>{{form.pengalaman}}</textarea>
                         </div>
+                        {% endfor %}
                         <p id='inputForumId' class='visually-hidden'></p>
                       </form>
                     </div>
@@ -63,6 +65,7 @@
           </div>
           <div class='contain-wrapper'>
             <div class='cards'>
+              {% for experience in experiences%}
               <div class='card'>
                 <div class='crd-header'>
                   <div class='pImage'><img  src='' alt=''></div>
@@ -72,33 +75,10 @@
                   </div>
                 </div>
                 <div class='crd-description'>
-                  <p>Description</p>
+                  <p>{{ experience.pengalaman }}</p>
                 </div>
               </div>
-              <div class='card'>
-                <div class='crd-header'>
-                  <div class='pImage'><img  src='' alt=''></div>
-                  <div class='pInformation' id='desc'>
-                    <h6>Manusia</h6>
-                    <p>Pekerjaan, umur</p>
-                  </div>
-                </div>
-                <div class='crd-description'>
-                  <p>Description</p>
-                </div>
-              </div>
-              <div class='card'>
-                <div class='crd-header'>
-                  <div class='pImage'><img  src='' alt=''></div>
-                  <div class='pInformation' id='desc'>
-                    <h6>Manusia</h6>
-                    <p>Pekerjaan, umur</p>
-                  </div>
-                </div>
-                <div class='crd-description'>
-                  <p>Description</p>
-                </div>
-              </div>
+              {% endfor %}
             </div>
           </div>
         </div>

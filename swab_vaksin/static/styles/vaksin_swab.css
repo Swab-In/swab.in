@@ -173,7 +173,7 @@ a:hover, a:active {
 }
 
 .experience-wrapper .cards{ 
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .experience-wrapper .card{
