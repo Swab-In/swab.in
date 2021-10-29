@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<html>
+<head>
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'styles/list_forum.css' %}" />
+    {% endblock css %}
+    {% block title %}
+    Forum
+    {% endblock title %}
+</head>
+
+<body>
+    {% block content %}
+    <div class='container'>
+        <div class='contain-wrapper' id='info'>
+            <div class='info-wrapper'>
+                <div class='iImage'> <img src="" alt=""></div>
+                <div class='iDescription'>
+                    <div class='info-lokasi'>
+                        <h3>Lokasi Swab</h3>
+                        <p><span>Alamat</span>:</p>
+                        <p><span>Jam Operasi</span>:</p>
+                        <p><span>Fasilitas</span>:</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class='forum-wrapper'>
+                <div class='forum-header'>
+                    <h3 class='title-forum'>Forum Diskusi</h3>
+                    <button type="button" class="button buttonadd" data-bs-toggle="modal"
+                        data-bs-target="#addModal">+</button>
+                </div>
+                {% include 'forum/add_modal.html' %}
+                <div class='contain-wrapper'>
+                    <div class='cards'>
+                        {% for forum in forums %}
+                        <div class='card'>
+                            <div class='crd-header'>
+                                <div class='pImage'><img src="/{{forum.gambar}}" alt=""></div>
+                                <div class='pInformation' id='desc'>
+                                    <h5 class="fw-bold">Judul {{ forum.title }}</h5>
+                                    <h7>Ditulis oleh: </h7>
+                                </div>
+                            </div>
+                            <div class='crd-btn'>
+                                <a href='thread'>Read More</h6></a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock content %}
+</body>
+</html>
+
+{% block js %}
+<script src="{% static 'js/list_forum.js' %}"></script>
+{% endblock js %}
