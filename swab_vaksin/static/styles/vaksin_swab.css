@@ -206,7 +206,7 @@ a:hover, a:active {
   margin: 10px 0px;
 }
 
-.buttonadd{
+.btn-add{
   background-color: #4F85EB;
   border: none;
   color: white;
@@ -214,7 +214,7 @@ a:hover, a:active {
   text-decoration: none;
 
   font-weight: bold;
-  font-size: 25px;
+  font-size: 20px;
 
   border-radius: 50%;
   width: 40px;
@@ -223,4 +223,54 @@ a:hover, a:active {
   margin-top: 25px;
 
   float: right;
+}
+
+.modal-content{
+  background-color: #4F85EB;
+  height: 550px;
+  padding: 10px 10px;
+}
+
+.modal-header{
+  height: 10px
+}
+
+.profil {
+  display: flex; 
+  flex-direction: row; 
+  flex-wrap: wrap;
+  justify-content: space-between;
+  color: #F9FBFF;
+  padding: 0px 20px;
+}
+
+.profil .pImage img{
+  width: 75px;
+  height: 75px;
+}
+
+.profil .pInformation {
+  width: 325px;
+}
+
+.form{
+  margin: 25px 10px;
+}
+
+.form-control{
+  height: 300px;
+}
+
+.submit-button{
+  background-color: #EAECED;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  float: right;
+  width: 100px;
+  height: 34px;
+  font-weight: 200;
+  font-size: 14px;
+  line-height: 21px;
 }

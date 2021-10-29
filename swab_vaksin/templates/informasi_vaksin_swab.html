@@ -9,7 +9,7 @@
   <body>
     {% block content %}
     <div class='container'>
-      <div class='contain-wrapper' id='info'>
+      <div class='contain-wrapper'>
         <div class='info-wrapper'>
           <div class='iImage'> <img src="" alt=""> </div>
           <div class='iDescription'>
@@ -27,7 +27,39 @@
         <div class='experience-wrapper'>
           <div class=experience-header>
             <h3 class='title-pengalaman'>Pengalaman</h3>
-            <button class="button buttonadd">+</button>
+            <button type='button' class='btn btn-round btn-add' data-bs-toggle='modal' data-bs-target='#addModal'>+</button>
+          </div>
+          <div class='pop-up-form'>
+            <div class='modal fade' id='addModal' tabindex='-1' aria-labelledby='addModalLabel' aria-hidden='true'>
+              <div class='modal-dialog modal-dialog-centered'>
+                <div class='modal-content border-0'>
+                  <div class='modal-header border-0'>
+                    <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                  </div>
+
+                  <div class='modal-body'>
+                    <div class='profil'>
+                      <div class='pImage'><img  src='' alt=''></div>
+                      <div class='pInformation'>
+                        <h3>Manusia</h3>
+                        <h6>Pekerjaan, umur</h6>
+                      </div>
+                    </div>
+                    <div class='form'> 
+                      <form method='POST' action='' id='addPengalamanForm'>
+                        {% csrf_token %}
+                        <div class='row mb-3 mx-4'>
+                          <textarea class='form-control' placeholder='Tuliskan pengalaman vaksin anda disini!' name='message'></textarea>
+                        </div>
+                        <p id='inputForumId' class='visually-hidden'></p>
+                      </form>
+                    </div>
+
+                    <input type='submit' form='addPengalamanForm' class='btn submit-button fw-bold' value='Submit' data-bs-dismiss='modal' />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class='contain-wrapper'>
             <div class='cards'>
