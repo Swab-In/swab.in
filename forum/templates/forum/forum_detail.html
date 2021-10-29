@@ -1,20 +1,23 @@
 {% extends 'base.html' %}
 {% load static %}
 
-<head>
-    {% block css %}
-    <link rel="stylesheet" href="{% static 'styles/detail_forum.css' %}" />
-    {% endblock css %}
-    {% block title %}
-    Forum | Detail
-    {% endblock title %}
-</head>
+{% block css %}
+<link rel="stylesheet" href="{% static 'styles/detail_forum.css' %}" />
+{% endblock css %}
+{% block title %}
+Forum | Detail
+{% endblock title %}
+
 
 {% block content %}
 <div>
-     {{ forum_detail.title }}
+    <h1>FORUM DISKUSI</h1>
+    <img class="thumbnail"
+        src="http://revertune.com/wp-content/uploads/2021/08/15-Lagu-Taylor-Swift-Terbaik-Paling-Enak-Didengarkan.jpg"
+        alt="">
+    <!-- {{ forum_detail.title }}
     {{ forum_detail.message }}
-    {{ forum_detail.image }}
+    {{ forum_detail.image }} -->
     <!-- {% for k in komentar %}
     <div>
         {{ k.komentar }}
