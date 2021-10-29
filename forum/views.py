@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 
 # Create your views here.
 def index(request):
-    return render(request, 'forum/index.html')
+    return render(request, 'forum/list_forum.html')
 
 # masih error
 def list(request):

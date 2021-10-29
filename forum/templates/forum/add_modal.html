@@ -1,0 +1,37 @@
+{% load static %}
+
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0" style="background-color: #4F85EB;">
+            <div class="modal-header border-0" style="height: 10px">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <div class="row mb-3 mx-3">
+                        <p class="text-white">Nama
+                        <br> Pekerjaan, umur</p>
+                    </div>
+                    <div class="row mb-3 mx-4">
+                        <input class="form-control" type="text" name="title" maxlength="30" placeholder="Judul"
+                            aria-label="default input example">
+                    </div>
+                    <div class="row mb-3 mx-4">
+                        <textarea class="form-control" placeholder="Tuliskan diskusi disini!" name="message"
+                            style="height:200px;"></textarea>
+                    </div>
+                    <!-- <div class="row mb-3 mx-4">
+                        <label for="formFile" class="form-label text-white">Thumbnail</label>
+                        <label for="imageUpload" class="btn btn-submit fw-bold">Upload</label>
+                        <input type="file" id="imageUpload" accept="image/*" style="display: none">
+                    </div>  -->
+                </form>
+            </div>
+            <div class="modal-footer border-0">
+                <input type="submit" form="addThreadForm" class="btn btn-submit fw-bold" value="Submit"
+                    data-bs-dismiss="modal" />
+            </div>
+        </div>
+    </div>
+</div>
