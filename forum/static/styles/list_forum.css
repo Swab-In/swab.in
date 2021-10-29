@@ -1,0 +1,221 @@
+* {
+    box-sizing: border-box;
+}
+  
+html, body,
+ul, ol, li,
+h1, h2, h3, h4, h5, h6, p, div {
+    margin: 0;
+    padding: 0;
+}
+  
+body{
+    background-color:rgba(234, 236, 237, 0.54);
+    font-style: normal;
+}
+  
+.container {
+    max-width: 1170px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+  
+.card{
+    padding: 15px 15px;
+    background-color:rgba(234, 236, 237, 0.54);
+    border: None;
+}
+  
+.btn-wrapper{
+    width: 300px;
+    height: 35px;
+    margin: 20px 0px 0px 30px;
+
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 22px;
+    text-align: center;
+}
+  
+.btn-wrapper button{
+    width: 125px;
+    height: 35px;
+
+    background: #F9FBFF;
+    border: None;
+
+    float: left;
+    margin-right: 20px;
+    border-top-right-radius: 20px;
+}
+  
+.contain-wrapper{
+    min-height: 125px;
+    background: #F9FBFF;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+  
+.cards{
+    display: flex; 
+    flex-direction: row; 
+    flex-wrap: wrap; 
+    justify-content: space-evenly;
+    width: 100%;
+}
+  
+
+.crd-header{
+    display: flex; 
+    flex-direction: row; 
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 130px;
+}
+  
+h3 {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 2.5px 0px;
+}
+  
+h6 {
+    font-weight: 200;
+    font-size: 15px;
+    margin: 2.5px 0px;
+}
+  
+.crd-btn a:link, a:visited {
+    background-color: #EAECED;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  
+    float: right;
+    padding: 8px 0px;
+  
+    width: 100px;
+    height: 34px;
+  
+    font-weight: 200;
+    font-size: 14px;
+    line-height: 21px;
+}
+  
+/* a:hover, a:active {
+    background-color: #4F85EB;
+    color: white;
+} */
+  
+#info{
+    margin-top: 20px;
+    padding: 50px;
+}
+
+.info-wrapper{
+    display: flex; 
+    flex-direction: row; 
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+  
+.iImage img {
+    width: 450px;
+    height: 225px;
+}
+
+.info-lokasi{
+    background-color: rgba(234, 236, 237, 0.54);
+    height: 225px;
+    width: 550px;
+    padding: 15px 15px;
+}
+  
+.info-lokasi p {
+    margin-bottom: 2px;
+}
+  
+.info-lokasi p>span {
+    display: inline-block;
+    min-width: 120px;
+}
+  
+.forum-wrapper{
+    margin-top: 15px;
+}
+  
+.forum-wrapper h3{ 
+    margin-top: 25px;
+}
+
+.forum-wrapper .cards{ 
+    justify-content: space-between;
+}
+  
+.forum-wrapper .card{
+    margin: 15px 0px;
+    width: 500px;
+    height: 200px;
+    padding: 20px;
+}
+  
+.pImage img{
+    width: 150px;
+    height: 80px;
+  }
+  
+.pInformation {
+    font-weight: 200;
+    font-size: 15px;
+    width: 300px;
+    height: 70px;
+}
+  
+.pInformation p{
+    font-weight: 200;
+    font-size: 12px;
+    width: 250px;
+}
+  
+.title-forum{
+    float:left;
+    margin: 10px 0px;
+}
+
+.btn-submit{
+    width: 100px;
+    height: 34px;
+  
+    font-style: normal;
+    font-weight: 200;
+    font-size: 14px;
+    line-height: 21px;
+  
+    color: #000000;
+    background: #EAECED;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border: None;
+  
+    float: right;
+    padding: 5px 5px 5px 5px;
+}
+
+.buttonadd{
+    background-color: #4F85EB;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+  
+    font-weight: bold;
+    font-size: 25px;
+  
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+  
+    margin-top: 25px;
+  
+    float: right;
+}
