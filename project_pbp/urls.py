@@ -19,5 +19,6 @@ import swabIn.urls as swabIn
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(swabIn))
+    path('', include(swabIn)),
+    path('forum/', include('forum.urls')),
 ]
