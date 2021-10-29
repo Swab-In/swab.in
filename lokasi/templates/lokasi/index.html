@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} SwabIn - Lokasi {% endblock title %}
+
+{% block content %}
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-8">
+                {% for post in posts %}
+                    <article class="media content-section">
+                    <div class="media-body">
+                        <div class="article-metadata">
+                            <a class="mr-2" href="#">{{ post.author }}</a>
+                            <small class="text-muted">{{ post.date_posted }}</small>
+                        </div>
+                        <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+                        <p class="article-content">{{ post.content }}</p>
+                    </div>
+                    </article>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+{% endblock content %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'lokasi/main.css' %}" />
+{% endblock css %}
