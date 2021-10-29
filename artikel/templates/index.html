@@ -7,71 +7,27 @@ Artikel
 {% block content %}
 <link rel="stylesheet" href="{% static 'index.css' %}">
 
-<!-- 
+<div class="heading">
+  <h1 class="heading__title">Artikel Swab.In</h1>
+</div>
 
-GRADIENT BANNER DESIGN BY SIMON LURWER ON DRIBBBLE:
-https://dribbble.com/shots/14101951-Banners
-
--->
 <div class="main-container">
-    <div class="heading">
-      <h1 class="heading__title">Artikel Swab.In</h1>
-    </div>
-    <div class="cards">
+  <div class="cards">
+
+  {% for post in object_list %}
+
       <div class="card card-1">
-        <div class="card__icon"><i class="fas fa-bolt"></i></div>
+        <div class="card__icon"></div>
         <p class="card__exit"><i class="fas fa-times"></i></p>
-        <img src="https://statik.tempo.co/data/2021/10/25/id_1061161/1061161_720.jpg" class="img-fluid" alt="Responsive image">
-        <h2 class="card__title">Harga Tes PCR di Jawa-Bali Resmi Turun jadi Rp 275.000, Ini Alasan Kemenkes</h2>
+        <h2 class="card__title" href="#"> {{ post.judul }}</h2>
+        <img src= {{ post.foto }} class="img-fluid" alt="Responsive image">
         <p class="card__apply">
-          <a class="card__link" href="#">Selengkapnya <i class="fas fa-arrow-right"></i></a>
+          <a class="card__link" href="{% url 'detailArtikel' post.pk %}">Selengkapnya <i class="fas fa-arrow-right"></i></a>
         </p>
       </div>
-      <div class="card card-2">
-        <div class="card__icon"><i class="fas fa-bolt"></i></div>
-        <p class="card__exit"><i class="fas fa-times"></i></p>
-        <img src="https://statik.tempo.co/data/2021/10/25/id_1061162/1061162_720.jpg" class="img-fluid" alt="Responsive image">
-        <h2 class="card__title">Harga Tes PCR Turun Jadi Rp275 Ribu di Jawa-Bali, Rp300 Ribu di Luar Jawa-Bali</h2>
-        <p class="card__apply">
-          <a class="card__link" href="#">Selengkapnya <i class="fas fa-arrow-right"></i></a>
-        </p>
-      </div>
-      <div class="card card-3">
-        <div class="card__icon"><i class="fas fa-bolt"></i></div>
-        <p class="card__exit"><i class="fas fa-times"></i></p>
-        <img src="https://statik.tempo.co/data/2021/09/02/id_1047678/1047678_720.jpg" class="img-fluid" alt="Responsive image">
-        <h2 class="card__title">Update Corona Jakarta, Ditemukan 105 Kasus Covid-19 Baru</h2>
-        <p class="card__apply">
-          <a class="card__link" href="#">Selengkapnya <i class="fas fa-arrow-right"></i></a>
-        </p>
-      </div>
-      <div class="card card-4">
-        <div class="card__icon"><i class="fas fa-bolt"></i></div>
-        <p class="card__exit"><i class="fas fa-times"></i></p>
-        <img src="https://statik.tempo.co/data/2021/01/01/id_991408/991408_720.jpg" class="img-fluid" alt="Responsive image">
-        <h2 class="card__title">Cegah Masuknya Varian AY.4.2, Satgas Covid-19 Maksimalkan Strategi Karantina</h2>
-        <p class="card__apply">
-          <a class="card__link" href="#">Selengkapnya<i class="fas fa-arrow-right"></i></a>
-        </p>
-      </div>
-      <div class="card card-5">
-        <div class="card__icon"><i class="fas fa-bolt"></i></div>
-        <p class="card__exit"><i class="fas fa-times"></i></p>
-        <img src="https://statik.tempo.co/data/2021/09/02/id_1047711/1047711_720.jpg" class="img-fluid" alt="Responsive image">
-        <h2 class="card__title">Indonesia Kedatangan 684.400 Dosis Vaksin Jadi AstraZeneca dari Selandia Baru</h2>
-        <p class="card__apply">
-          <a class="card__link" href="#">Selengkapnya <i class="fas fa-arrow-right"></i></a>
-        </p>
-      </div>
-      <div class="card card-1">
-        <div class="card__icon"><i class="fas fa-bolt"></i></div>
-        <p class="card__exit"><i class="fas fa-times"></i></p>
-        <img src="https://statik.tempo.co/data/2021/08/06/id_1040596/1040596_720.jpg" class="img-fluid" alt="Responsive image">
-        <h2 class="card__title">Epidemiolog: Pelonggaran PPKM Level 2 Jakarta Harus Tetap Terukur</h2>
-        <p class="card__apply">
-          <a class="card__link" href="#">Selengkapnya <i class="fas fa-arrow-right"></i></a>
-        </p>
+
+        {% endfor %}
       </div>
     </div>
-  </div>
-{% endblock content %}
+
+  {% endblock content %}

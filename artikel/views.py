@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from .models import Komentar
+from .models import *
 from .forms import NoteForm
 from django.http import HttpResponseRedirect
+from django.views.generic import ListView, DetailView
 
 # Create your views here.
 def index(request):
@@ -24,3 +25,17 @@ def add_comment(request):
 
     context['form']= form
     return render(request, "index.html", context)
+
+class HomeView(ListView):
+    model = Post
+    template_name = 'index.html'
+    
+class ArticleDetail(DetailView):
+    model = Post
+    template_name = 'base_artikel.html'
+    context_object_name = "artikel_detail"
+
+    def get_context_data(self, **kwargs):
+        ctx = super(ArticleDetail, self).get_context_data(**kwargs)
+        ctx['komentar'] = Komentar.objects.all().filter(post_id=ctx['artikel_detail'].pk)
+        return ctx
