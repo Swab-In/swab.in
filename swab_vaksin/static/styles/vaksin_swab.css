@@ -51,9 +51,13 @@ body{
   padding: 10px;
 }
 
+.btn-wrapper .vaksin-btn{
+  opacity: 0.5;
+}
+
 .btn-wrapper button:hover{
   transition: all .1s ease;
-  box-shadow: #4f85eb 1px -1px, #85a5e0 2px -2px
+  box-shadow: #4f85eb 2px -2px, #85a5e0 2px -2px
 }
 
 .contain-wrapper{
