@@ -41,12 +41,19 @@ body{
   width: 125px;
   height: 35px;
 
-  background: #F9FBFF;
-  border: None;
+  background-color: #F9FBFF;  
+  border: none;
 
   float: left;
   margin-right: 20px;
   border-top-right-radius: 20px;
+
+  padding: 10px;
+}
+
+.btn-wrapper button:hover{
+  transition: all .1s ease;
+  box-shadow: #4f85eb 1px -1px, #85a5e0 2px -2px
 }
 
 .contain-wrapper{
@@ -64,11 +71,19 @@ body{
   width: 100%;
 }
 
+.cards .swab-cards, .cards .vaksin-cards{
+  display: flex; 
+  flex-direction: row; 
+  flex-wrap: wrap; 
+  justify-content: space-evenly;
+  width: 100%;
+}
+
 .contain-wrapper .card{
   margin: 25px 0px;
   width: 450px;
   height: 250px;
-  padding: 20px;
+  padding: 20px 20px 15px 20px;
 }
 
 .crd-header{
@@ -85,7 +100,6 @@ body{
 
 .cInformation {
   font-weight: 200;
-  font-size: 15px;
   width: 300px;
   height: 100px;
 }
@@ -93,19 +107,21 @@ body{
 h3 {
   font-weight: bold;
   font-size: 20px;
-  margin: 2.5px 0px;
+  margin-top: 2.5px;
+  margin-bottom: 5px;
 }
 
 h6, p{
   font-weight: 200;
   font-size: 15px;
-  margin: 2.5px 0px;
+  margin: 5px 0px;
 }
 
 .crd-description {
-  margin-top: 10px;
+  margin: 5px 0px;
   width: 450;
   height: 75px;
+  overflow: hidden;
 }
 
 .crd-btn a:link, a:visited {
@@ -113,13 +129,12 @@ h6, p{
   color: black;
   text-align: center;
   text-decoration: none;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
+  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;  
   float: right;
-  padding: 8px 0px;
+  padding: 7px 0px;
 
   width: 100px;
-  height: 34px;
+  height: 30px;
 
   font-weight: 200;
   font-size: 14px;
@@ -225,6 +240,13 @@ a:hover, a:active {
   float: right;
 }
 
+.btn-add button:hover{
+  transition: all .1s ease;
+  background-color: white;
+  color: #4F85EB;
+
+}
+
 .modal-content{
   background-color: #4F85EB;
   height: 550px;
@@ -255,10 +277,6 @@ a:hover, a:active {
 
 .form{
   margin: 25px 10px;
-}
-
-.form-control{
-  height: 300px;
 }
 
 .submit-button{

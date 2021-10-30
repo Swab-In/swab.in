@@ -15,117 +15,56 @@
         </div>
         
         <div class='contain-wrapper'>
-          <div class='cards'>
-            <div class='card'>
-              <div class='crd-header'>
-                <div class='cImage'><img  src="" alt=""></div>
-                <div class='cInformation' id='desc'>
-                  <h3>Vaksin</h3>
-                  <h6>Produsen: </h6>
-                  <h6>Tahun Produksi: </h6>
-                  <h6>Frekuensi Suntik: </h6>
+          <div class='swab-cards'>
+            <div class='cards'>
+              {% for swabInformation in swabInformations%}
+              <div class='card'>
+                <div class='crd-header'>
+                  <div class='cImage'><img  src='{{ swabInformation.gambar.url }}' alt=""></div>
+                  <div class='cInformation' id='desc'>
+                    <h3>{{ swabInformation.nama }}</h3>
+                    <h6>Price: {{ swabInformation.price }}</h6>
+                    <h6>Akurasi: {{ swabInformation.akurasi }}</h6>
+                    <h6>Prosedur: {{ swabInformation.prosedur }}</h6>
+                  </div>
+                </div>
+                <div class='crd-description'>
+                  <p>{{ swabInformation.deskripsi }}</p>
+                </div>
+                <div class='crd-btn'>
+                  <a href='informasi'>Read More</a>
                 </div>
               </div>
-              <div class='crd-description'>
-                <p>Description</p>
-              </div>
-              <div class='crd-btn'>
-                <a href='informasi'>Read More</h6></a>
-              </div>
+              {% endfor %}
             </div>
+          </div>
 
-            <div class='card'>
-              <div class='crd-header'>
-                <div class='cImage'><img  src="" alt=""></div>
-                <div class='cInformation'>
-                  <h3>Vaksin</h3>
-                  <h6>Produsen: </h6>
-                  <h6>Tahun Produksi: </h6>
-                  <h6>Frekuensi Suntik: </h6>
+          <div class='vaksin-cards' style='display: none;'>
+            <div class='cards'>
+              {% for vaksinInformation in vaksinInformations%}
+              <div class='card'>
+                <div class='crd-header'>
+                  <div class='cImage'><img  src='{{ vaksinInformation.gambar.url }}' alt=""></div>
+                  <div class='cInformation' id='desc'>
+                    <h3>{{ vaksinInformation.nama }}</h3>
+                    <h6>Produsen: {{ vaksinInformation.produsen }}</h6>
+                    <h6>Frekuensi Suntik: {{ vaksinInformation.frekuensi }}</h6>
+                    <h6>Efikasi: {{ vaksinInformation.efikasi }}</h6>
+                  </div>
+                </div>
+                <div class='crd-description'>
+                  <p>{{ vaksinInformation.deskripsi }}</p>
+                </div>
+                <div class='crd-btn'>
+                  <a href='informasi'>Read More</a>
                 </div>
               </div>
-              <div class='crd-description'>
-                <p>Description</p>
-              </div>
-              <div class='crd-btn'>
-                <a href='informasi'>Read More</h6></a>
-              </div>
-            </div>
-
-            <div class='card'>
-              <div class='crd-header'>
-                <div class='cImage'><img  src="" alt=""></div>
-                <div class='cInformation'>
-                  <h3>Vaksin</h3>
-                  <h6>Produsen: </h6>
-                  <h6>Tahun Produksi: </h6>
-                  <h6>Frekuensi Suntik: </h6>
-                </div>
-              </div>
-              <div class='crd-description'>
-                <p>Description</p>
-              </div>
-              <div class='crd-btn'>
-                <a href='informasi'>Read More</h6></a>
-              </div>
-            </div>
-
-            <div class='card'>
-              <div class='crd-header'>
-                <div class='cImage'><img  src="" alt=""></div>
-                <div class='cInformation'>
-                  <h3>Vaksin</h3>
-                  <h6>Produsen: </h6>
-                  <h6>Tahun Produksi: </h6>
-                  <h6>Frekuensi Suntik: </h6>
-                </div>
-              </div>
-              <div class='crd-description'>
-                <p>Description</p>
-              </div>
-              <div class='crd-btn'>
-                <a href='informasi'>Read More</h6></a>
-              </div>
-            </div>
-
-            <div class='card'>
-              <div class='crd-header'>
-                <div class='cImage'><img  src="" alt=""></div>
-                <div class='cInformation'>
-                  <h3>Vaksin</h3>
-                  <h6>Produsen: </h6>
-                  <h6>Tahun Produksi: </h6>
-                  <h6>Frekuensi Suntik: </h6>
-                </div>
-              </div>
-              <div class='crd-description'>
-                <p>Description</p>
-              </div>
-              <div class='crd-btn'>
-                <a href='informasi'>Read More</h6></a>
-              </div>
-            </div>
-
-            <div class='card'>
-              <div class='crd-header'>
-                <div class='cImage'><img  src="" alt=""></div>
-                <div class='cInformation'>
-                  <h3>Vaksin</h3>
-                  <h6>Produsen: </h6>
-                  <h6>Tahun Produksi: </h6>
-                  <h6>Frekuensi Suntik: </h6>
-                </div>
-              </div>
-              <div class='crd-description'>
-                <p>Description</p>
-              </div>
-              <div class='crd-btn'>
-                <a href='informasi'>Read More</h6></a>
-              </div>
+              {% endfor %}
             </div>
           </div>
         </div>
       </div>
-      {% endblock content %}
+    {% endblock content %}
+    {% block js %} <script src="{% static 'js/swab_vaksin.js' %}"></script> {% endblock js %}
   </body>
 </html>
