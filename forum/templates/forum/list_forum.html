@@ -2,6 +2,7 @@
 {% load static %}
 
 <html>
+
 <head>
     {% block css %}
     <link rel="stylesheet" href="{% static 'styles/list_forum.css' %}" />
@@ -19,10 +20,11 @@
                 <div class='iImage'> <img src="" alt=""></div>
                 <div class='iDescription'>
                     <div class='info-lokasi'>
-                        <h3>Lokasi Swab</h3>
-                        <p><span>Alamat</span>:</p>
+                        <h3>Lokasi {{ post.title }}</h3>
+                        <p>{{ post.content }}</p>
+                        <!-- <p><span>Alamat</span>:</p>
                         <p><span>Jam Operasi</span>:</p>
-                        <p><span>Fasilitas</span>:</p>
+                        <p><span>Fasilitas</span>:</p> -->
                     </div>
                 </div>
             </div>
@@ -33,20 +35,20 @@
                     <button type="button" class="button buttonadd" data-bs-toggle="modal"
                         data-bs-target="#addModal">+</button>
                 </div>
-                {% include 'forum/add_modal.html' %}
+
                 <div class='contain-wrapper'>
                     <div class='cards'>
                         {% for forum in forums %}
                         <div class='card'>
                             <div class='crd-header'>
-                                <div class='pImage'><img src="/{{forum.gambar}}" alt=""></div>
+                                <div class='pImage'><img src="{{forum.image}}" alt=""></div>
                                 <div class='pInformation' id='desc'>
-                                    <h5 class="fw-bold">Judul {{ forum.title }}</h5>
-                                    <h7>Ditulis oleh: </h7>
+                                    <h5 class="fw-bold">{{ forum.title }}</h5>
+                                    <h7>Ditulis oleh: {{ forum.writer }} </h7>
                                 </div>
                             </div>
                             <div class='crd-btn'>
-                                <a href='thread'>Read More</h6></a>
+                                <a href="{}">Read More</h6></a>
                             </div>
                         </div>
                         {% endfor %}
@@ -55,10 +57,48 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0" style="background-color: #4F85EB;">
+                <div class="modal-header border-0" style="height: 10px">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3 mx-3">
+                        <p class="text-white">Nama
+                            <br> Pekerjaan, umur
+                        </p>
+                    </div>
+                    <form method="POST" action="" id="addThreadForm">
+                        {% csrf_token %}
+                            <div class="row mb-3 mx-4">
+                                <input class="form-control" type="text" name="title" maxlength="30" placeholder="Judul"
+                                    aria-label="default input example">
+                            </div>
+                            <div class="row mb-3 mx-4">
+                                <textarea class="form-control" placeholder="Tuliskan diskusi disini" name="message"
+                                    style="height:200px;"></textarea>
+                            </div>
+                            <div class="row mb-3 mx-4">
+                                <input class="form-control" type="text" name="image" placeholder="URL thumbnail"
+                                    aria-label="default input example">
+                            </div>
+                            <p id='inputForumId' class='visually-hidden'></p>
+                    </form>
+                </div>
+                <div class="modal-footer border-0">
+                    <input type="submit" form="addThreadForm" class="btn btn-submit fw-bold" value="Submit"
+                        data-bs-dismiss="modal" />
+                </div>
+            </div>
+        </div>
+    </div>
     {% endblock content %}
 </body>
+
 </html>
 
-{% block js %}
+<!-- {% block js %}
 <script src="{% static 'js/list_forum.js' %}"></script>
-{% endblock js %}
+{% endblock js %} -->
