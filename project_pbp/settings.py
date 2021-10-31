@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'swabIn',
     'lokasi',
     'crispy_forms',
+    'user',
 ]
 
 MIDDLEWARE = [

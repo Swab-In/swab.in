@@ -17,9 +17,11 @@ from django.urls import path, include
 from django.contrib import admin
 import swabIn.urls as swabIn
 import lokasi.urls as lokasi
+import user.urls as user
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(swabIn)),
-    path('lokasi/', include(lokasi))
+    path('lokasi/', include(lokasi)),
+    path('', include(user)),
 ]
