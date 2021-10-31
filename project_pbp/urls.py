@@ -21,5 +21,5 @@ import artikel.urls as artikel
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(swabIn)),
-    path('', include(artikel)),
+    path('artikel', include(artikel)),
 ]

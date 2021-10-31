@@ -12,3 +12,4 @@ class Post(models.Model):
 class Komentar(models.Model):
     post_id = models.ForeignKey(Post, on_delete=models.CASCADE)
     komen = models.CharField(max_length=140)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)

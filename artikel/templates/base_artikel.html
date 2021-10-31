@@ -2,7 +2,6 @@
 {% load static %}
 
 {% block title %}
-Artikel
 {% endblock title %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'base_artikel.css' %}">
@@ -10,7 +9,7 @@ Artikel
 <div class="artikel"> 
 
     <h1> {{ artikel_detail.judul }} </h1>
-    {{ artikel_detail.foto }}
+    <img src= {{ artikel_detail.foto }} class="img-fluid" alt="Responsive image"> <br/>
 
     {{ artikel_detail.author }}
     {{ artikel_detail.isi }}
@@ -18,17 +17,17 @@ Artikel
     <h2>Komentar</h2>
     
     {% for i in komentar %}
-    <form action="" method="POST">
+    
+    {% endfor %}
 
+    <form action="" method="POST">
         {% csrf_token %}
-    
+
         {{form}}
-        
-        <input type="submit" value="Submit">
-    
+        <div class="btn1">
+            <input type="submit" value="Submit">
+        </div>
     </form>
     
-
-    {% endfor %}
-    
+</div>
 {% endblock content %}
