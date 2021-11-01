@@ -15,16 +15,13 @@
 <body>
     {% block content %}
     <div class='container'>
-        <div class='contain-wrapper' id='info'>
+       <div class='contain-wrapper' id='info'>
             <div class='info-wrapper'>
-                <div class='iImage'> <img src="" alt=""></div>
+                <div class='iImage'><img src="" alt=""></div>
                 <div class='iDescription'>
                     <div class='info-lokasi'>
-                        <h3>Lokasi {{ post.title }}</h3>
-                        <p>{{ post.content }}</p>
-                        <!-- <p><span>Alamat</span>:</p>
-                        <p><span>Jam Operasi</span>:</p>
-                        <p><span>Fasilitas</span>:</p> -->
+                        <h3>{{ post_detail.title }}</h3>
+                        <p>{{ post_detail.content }}</p>
                     </div>
                 </div>
             </div>
@@ -38,14 +35,17 @@
 
                 <div class='contain-wrapper'>
                     <div class='cards'>
-                        {% for forum in forums %}
+                        {% for f in forum %}
                         <div class='card'>
                             <div class='crd-header'>
-                                <div class='pImage'><img src="{{forum.image}}" alt=""></div>
+                                <div class='pImage'><img src="{{f.image}}" alt=""></div>
                                 <div class='pInformation' id='desc'>
-                                    <h5 class="fw-bold">{{ forum.title }}</h5>
-                                    <h7>Ditulis oleh: {{ forum.writer }} </h7>
+                                    <h5 class="fw-bold">{{ f.title }}</h5>
+                                    <h7>Ditulis oleh: {{ f.writer }} </h7>
                                 </div>
+                            </div>
+                            <div class='crd-description'>
+                                <p>{{ f.message }}</p>
                             </div>
                             <div class='crd-btn'>
                                 <a href="{}">Read More</h6></a>
@@ -99,6 +99,6 @@
 
 </html>
 
-<!-- {% block js %}
+{% block js %}
 <script src="{% static 'js/list_forum.js' %}"></script>
-{% endblock js %} -->
+{% endblock js %}
