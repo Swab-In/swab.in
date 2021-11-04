@@ -1,23 +1,67 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block css %}
+<link rel="stylesheet" href="{% static 'styles/home.css' %}">
+{% endblock css %}
+
 {% block title %}
 Swab.In
 {% endblock title %}
 {% block content %}
-<section>
+<!-- home section starts -->
+<section class="home" id="home">
+
     <div class="content">
-        <div class="info">
-            <h2>Welcome to <br> <span>Swab.in!</span></h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas iste nisi dignissimos earum soluta id
-                dolorem, nobis aliquid quisquam mollitia qui commodi consequatur doloribus sunt tenetur. Consequuntur
-                corrupti nam odit.</p>
-            <button class='btn1'>
-                More Info
-            </button>
-        </div>
+        <h3>selamat datang di swab.in!</h3>
+        <p>tempat informasi swab dan vaksin kesayanganmu</p>
+        <a href="#" class="btn" id="about">More Info</a>
     </div>
+
+    <div class="image">
+        <img src="{% static 'images/logo.svg' %}" alt="">
+    </div>
+
 </section>
+
+<!-- home section ends -->
+
+<!-- features section starts  -->
+
+<section class="features" id="features">
+
+    <h1 class="heading"> fitur kami </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <img src="{% static 'images/vaksin.jpg' %}" alt="">
+            <h3>Informasi Swab & Vaksin</h3>
+            <p>Pada fitur ini, Anda akan disajikan informasi lengkap seputar tes pemeriksaan COVID-19 serta vaksin yang
+                beredar.</p>
+            <a href="#" class="btn" id="vaksin">selengkapnya</a>
+        </div>
+
+        <div class="box">
+            <img src="{% static 'images/swab.jpg' %}" alt="">
+            <h3>Lokasi Swab Test</h3>
+            <p>Pada fitur ini, kami menyajikan informasi lengkap lokasi tes pemeriksaan COVID-19 serta ulasan dari
+                pengguna lainnya.</p>
+            <a href="#" class="btn" id="swab">selengkapnya</a>
+        </div>
+
+        <div class="box">
+            <img src="{% static 'images/artikel.jpg' %}" alt="">
+            <h3>Artikel</h3>
+            <p>Pada fitur ini, Anda dapat membaca berita terkini seputar pandemi COVID-19.</p>
+            <a href="#" class="btn" id="artikel">selengkapnya</a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- features section ends -->
 {% endblock content %}
 
 {% block js %}
