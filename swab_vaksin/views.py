@@ -78,5 +78,6 @@ class InfoDetailVaksin(DetailView):
     def get_context_data(self, **kwargs):
         ctx = super(InfoDetailVaksin, self).get_context_data(**kwargs)
         ctx['vExperience'] = VaksinExperience.objects.all().filter(vaksin_id=ctx['informasi_vaksin'].pk)
+        ctx['form'] = PengalamanVaksinForm
         print(ctx['vExperience'])
         return ctx
