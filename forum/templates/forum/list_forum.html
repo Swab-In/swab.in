@@ -17,7 +17,7 @@
     <div class='container'>
        <div class='contain-wrapper' id='info'>
             <div class='info-wrapper'>
-                <div class='iImage'><img src="" alt=""></div>
+                <div class='iImage'><img src="{{ post_detail.lokasi_pic }}" alt=""></div>
                 <div class='iDescription'>
                     <div class='info-lokasi'>
                         <h3>{{ post_detail.title }}</h3>
@@ -65,23 +65,23 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="row mb-3 mx-3">
-                        <p class="text-white">Nama
-                            <br> Pekerjaan, umur
+                    <!-- <div class="row mb-3 mx-3">
+                        <p class="text-white"> {{ customuser.first_name }}
+                            <br> {{ customuser.pekerjaan }} {{ customuser.umur }}
                         </p>
-                    </div>
+                    </div> -->
                     <form method="POST" action="" id="addThreadForm">
                         {% csrf_token %}
                             <div class="row mb-3 mx-4">
-                                <input class="form-control" type="text" name="title" maxlength="30" placeholder="Judul"
+                                <input class="form-control" type="text" id="title" name="title" maxlength="30" placeholder="Judul"
                                     aria-label="default input example">
                             </div>
                             <div class="row mb-3 mx-4">
-                                <textarea class="form-control" placeholder="Tuliskan diskusi disini" name="message"
+                                <textarea class="form-control" id="message" placeholder="Tuliskan diskusi disini" name="message"
                                     style="height:200px;"></textarea>
                             </div>
                             <div class="row mb-3 mx-4">
-                                <input class="form-control" type="text" name="image" placeholder="URL thumbnail"
+                                <input class="form-control" id="image" type="text" name="image" placeholder="URL thumbnail"
                                     aria-label="default input example">
                             </div>
                             <p id='inputForumId' class='visually-hidden'></p>

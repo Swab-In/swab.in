@@ -1,3 +1,5 @@
+from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
     ListView,
     DetailView,
@@ -9,6 +11,8 @@ from django.views.generic.edit import FormMixin
 from .models import Post
 from forum.models import Forum
 from forum.forms import ForumForm
+from django.http.response import HttpResponse
+from django.core import serializers
 from django.contrib.auth.models import User
 
 class PostListView(ListView):
@@ -18,7 +22,7 @@ class PostListView(ListView):
     ordering = ['-date_posted']
     paginate_by = 5
 
-class PostDetailView(DetailView, FormMixin):
+class PostDetailView(DetailView, FormMixin, LoginRequiredMixin):
     model = Post 
     context_object_name = 'post_detail'
     template_name = 'forum/list_forum.html'
@@ -39,6 +43,10 @@ class PostDetailView(DetailView, FormMixin):
             return self.form_valid(form, request)
         else:
             return self.form_invalid(form)
+    
+    def json(request):
+        data = serializers.serialize('json', Forum.objects.all())
+        return HttpResponse(data, content_type="application/json")
 
     def form_valid(self, form, request, **kwargs):
         ctx = super(PostDetailView, self).get_context_data(**kwargs)
@@ -50,7 +58,7 @@ class PostDetailView(DetailView, FormMixin):
         forum.save()
         return super(PostDetailView, self).form_valid(form)
 
-class PostCreateView(CreateView):
+class PostCreateView(CreateView, LoginRequiredMixin):
     model = Post
     fields = ['title', 'content']
 

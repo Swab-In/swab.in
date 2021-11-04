@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %} SwabIn - Lokasi {% endblock title %}
+{% block title %} Lokasi {% endblock title %}
 
 {% block content %}
     <main role="main" class="container">
@@ -56,3 +56,7 @@
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'lokasi/main.css' %}" />
 {% endblock css %}
+
+{% block js %}
+<script src="{% static 'forum/static/js/list_forum.js' %}"></script>
+{% endblock js %}

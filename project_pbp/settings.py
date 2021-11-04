@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'forum',
     'lokasi',
     'crispy_forms',
+    'user',
 ]
 
 MIDDLEWARE = [
