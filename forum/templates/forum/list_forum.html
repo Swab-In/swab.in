@@ -20,8 +20,8 @@
                 <div class='iImage'><img src="{{ post_detail.lokasi_pic }}" alt=""></div>
                 <div class='iDescription'>
                     <div class='info-lokasi'>
-                        <h3>{{ post_detail.title }}</h3>
-                        <p>{{ post_detail.content }}</p>
+                        <h3>{{ post_detail.lokasi }}</h3>
+                        <p>{{ post_detail.detail }}</p>
                     </div>
                 </div>
             </div>
@@ -29,8 +29,7 @@
             <div class='forum-wrapper'>
                 <div class='forum-header'>
                     <h3 class='title-forum'>Forum Diskusi</h3>
-                    <button type="button" class="button buttonadd" data-bs-toggle="modal"
-                        data-bs-target="#addModal">+</button>
+                    <button type="button" id="buttonAdd" class="button buttonadd">+</button>
                 </div>
 
                 <div class='contain-wrapper'>
@@ -41,7 +40,7 @@
                                 <div class='pImage'><img src="{{f.image}}" alt=""></div>
                                 <div class='pInformation' id='desc'>
                                     <h5 class="fw-bold">{{ f.title }}</h5>
-                                    <h7>Ditulis oleh: {{ f.writer }} </h7>
+                                    <h7>Ditulis oleh: {{ f.writer.first_name }} </h7>
                                 </div>
                             </div>
                             <div class='crd-description'>
@@ -65,11 +64,11 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <!-- <div class="row mb-3 mx-3">
-                        <p class="text-white"> {{ customuser.first_name }}
-                            <br> {{ customuser.pekerjaan }} {{ customuser.umur }}
-                        </p>
-                    </div> -->
+                    <div class="row mb-3 mx-3">
+                        <!-- <p class="text-white"> {{ forum.writer.first_name }}
+                            <br> {{ forum.writer.pekerjaan }} , {{ forum.writer.umur }}
+                        </p> -->
+                    </div>
                     <form method="POST" action="" id="addThreadForm">
                         {% csrf_token %}
                             <div class="row mb-3 mx-4">

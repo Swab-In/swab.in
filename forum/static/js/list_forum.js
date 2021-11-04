@@ -1,4 +1,18 @@
-// $(document).ready(function () {
+$(document).ready(function () {
+    $("#buttonAdd").click(function (e) {
+        e.preventDefault();
+        $.ajax({ 
+            url: window.location.href,
+            success: function () {
+                console.log('success');
+                $('#addModal').modal('show');
+            },
+            error: function () {
+                console.log('something wrong');
+            }
+        });
+    });
+
 //     $("#addThreadForm").submit(function (e) {
 //         e.preventDefault();
 //         var image = $('#image').val()
@@ -24,4 +38,4 @@
 //         }
 //         });
 //     });
-// });
+});

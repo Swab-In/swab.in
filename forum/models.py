@@ -1,12 +1,10 @@
 from django.db import models
-from django.conf import settings
 from lokasi.models import Post
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Forum(models.Model):
-    writer = models.ForeignKey(
-      settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True
-    )
+    writer = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=30)
     message = models.TextField()
     image = models.TextField()

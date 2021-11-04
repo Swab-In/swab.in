@@ -43,10 +43,6 @@ class PostDetailView(DetailView, FormMixin, LoginRequiredMixin):
             return self.form_valid(form, request)
         else:
             return self.form_invalid(form)
-    
-    def json(request):
-        data = serializers.serialize('json', Forum.objects.all())
-        return HttpResponse(data, content_type="application/json")
 
     def form_valid(self, form, request, **kwargs):
         ctx = super(PostDetailView, self).get_context_data(**kwargs)
@@ -60,7 +56,7 @@ class PostDetailView(DetailView, FormMixin, LoginRequiredMixin):
 
 class PostCreateView(CreateView, LoginRequiredMixin):
     model = Post
-    fields = ['title', 'content']
+    fields = ['lokasi', 'detail']
 
     # Set current author
     def form_valid(self, form):
