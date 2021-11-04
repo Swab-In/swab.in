@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<html>
+  <head>
+    {% block css %} <link rel="stylesheet" href="{% static 'styles/vaksin_swab.css' %}" /> {% endblock css %}
+    {% block title %} Swab & Vaksin {% endblock title %}    
+  </head>
+  <body>
+    {% block content %}
+    <div class='container'>
+      <div class='contain-wrapper' id='info'>
+        <div class='vaksin-info'>
+          <div class='info-wrapper'>
+            <div class='iImage'> <img src='{{ informasi_vaksin.gambar.url }}' alt=''> </div>
+            <div class='iDescription'>
+              <div class='info-lengkap'>
+                <h3>{{ informasi_vaksin.nama }}</h3>
+                <p><span>Price</span>: {{ informasi_vaksin.produsen }}</p>
+                <p><span>Akurasi</span>: {{ informasi_vaksin.frekuensi }}</p>
+                <p><span>Prosedur</span>: {{ informasi_vaksin.efikasi }}</p>
+                <p>{{ informasi_vaksin.deskripsi }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class='experience-wrapper'>
+          <div class=experience-header>
+            <h3 class='title-pengalaman'>Pengalaman</h3>
+            <button type='button' class='btn btn-round btn-add' data-bs-toggle='modal' data-bs-target='#addModal'>+</button>
+          </div>
+          <div class='pop-up-form'>
+            <div class='modal fade' id='addModal' tabindex='-1' aria-labelledby='addModalLabel' aria-hidden='true'>
+              <div class='modal-dialog modal-dialog-centered'>
+                <div class='modal-content border-0'>
+                  <div class='modal-header border-0'>
+                    <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                  </div>
+
+                  <div class='modal-body'>
+                    <div class='profil'>
+                      <div class='pImage'><img  src='' alt=''></div>
+                      <div class='pInformation'>
+                        <h3>{{ form.penulis }}</h3>
+                        <h6>Pekerjaan, umur</h6>
+                      </div>
+                    </div>
+                    <div class='form'> 
+                      <form method='POST' action='{{ form }}' id='addPengalamanForm'>
+                        {% csrf_token %}
+                        <div class='row mb-3 mx-4' style='height: 300px'>
+                          {{form.pengalamanVaksin}}
+                        </div>
+                        <p id='inputForumId' class='visually-hidden'></p>
+                      </form>
+                    </div>
+                    <input type='submit' form='addPengalamanForm' class='btn submit-button fw-bold' value='Submit' data-bs-dismiss='modal' />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class='contain-wrapper'>
+            <div class='vaksin-experience'>
+              <div class='cards'>
+                {% for e in vExperience%}
+                <div class='card'>
+                  <div class='crd-header'>
+                    <div class='pImage'><img  src='' alt=''></div>
+                    <div class='pInformation' id='desc'>
+                      <h6>{{ e.penulis }}</h6>
+                      <p>Pekerjaan, umur</p>
+                    </div>
+                  </div>
+                  <div class='crd-description'>
+                    <p>{{ e.pengalamanVaksin }}</p>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endblock content %}
+  </body>
+</html>

@@ -32,7 +32,7 @@
                   <p>{{ swabInformation.deskripsi }}</p>
                 </div>
                 <div class='crd-btn'>
-                  <a href='informasi'>Read More</a>
+                  <a href="{% url 'informasi-swab' swabInformation.pk %}">Read More</a>
                 </div>
               </div>
               {% endfor %}
@@ -56,7 +56,7 @@
                   <p>{{ vaksinInformation.deskripsi }}</p>
                 </div>
                 <div class='crd-btn'>
-                  <a href='informasi'>Read More</a>
+                  <a href="{% url 'informasi-vaksin' vaksinInformation.pk %}">Read More</a>
                 </div>
               </div>
               {% endfor %}

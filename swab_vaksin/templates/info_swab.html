@@ -10,20 +10,20 @@
     {% block content %}
     <div class='container'>
       <div class='contain-wrapper' id='info'>
-        <div class='info-wrapper'>
-          <div class='iImage'> <img src='' alt=''> </div>
-          <div class='iDescription'>
-            <div class='info-lengkap'>
-              <h3>Vaksin</h3>
-              <p><span>Produsen</span>:</p>
-              <p><span>Tahun Produksi</span>:</p>
-              <p><span>Frekuensi Suntik</span>:</p>
-              <p><span>Efek Samping</span>:</p>
-              <p>Description</p>
+        <div class='swab-info'>
+          <div class='info-wrapper'>
+            <div class='iImage'> <img src='{{ informasi_swab.gambar.url }}' alt=''> </div>
+            <div class='iDescription'>
+              <div class='info-lengkap'>
+                <h3>{{ informasi_swab.nama }}</h3>
+                <p><span>Price</span>: {{ informasi_swab.price }}</p>
+                <p><span>Akurasi</span>: {{ informasi_swab.akurasi }}</p>
+                <p><span>Prosedur</span>: {{ informasi_swab.prosedur }}</p>
+                <p>{{ informasi_swab.deskripsi }}</p>
+              </div>
             </div>
           </div>
         </div>
-
         <div class='experience-wrapper'>
           <div class=experience-header>
             <h3 class='title-pengalaman'>Pengalaman</h3>
@@ -41,15 +41,15 @@
                     <div class='profil'>
                       <div class='pImage'><img  src='' alt=''></div>
                       <div class='pInformation'>
-                        <h3>Manusia</h3>
+                        <h3>{{ form.penulis }}</h3>
                         <h6>Pekerjaan, umur</h6>
                       </div>
                     </div>
                     <div class='form'> 
-                      <form method='POST' action='' id='addPengalamanForm'>
+                      <form method='POST' action='{{ form }}' id='addPengalamanForm'>
                         {% csrf_token %}
                         <div class='row mb-3 mx-4' style='height: 300px'>
-                          {{form.pengalaman}}
+                          {{form.pengalamanSwab}}
                         </div>
                         <p id='inputForumId' class='visually-hidden'></p>
                       </form>
@@ -61,27 +61,28 @@
             </div>
           </div>
           <div class='contain-wrapper'>
-            <div class='cards'>
-              {% for experience in experiences%}
-              <div class='card'>
-                <div class='crd-header'>
-                  <div class='pImage'><img  src='' alt=''></div>
-                  <div class='pInformation' id='desc'>
-                    <h6>Manusia</h6>
-                    <p>Pekerjaan, umur</p>
+            <div class='swab-experience'>
+              <div class='cards'>
+                {% for e in sExperience%}
+                <div class='card'>
+                  <div class='crd-header'>
+                    <div class='pImage'><img  src='' alt=''></div>
+                    <div class='pInformation' id='desc'>
+                      <h6>{{ e.penulis }}</h6>
+                      <p>Pekerjaan, umur</p>
+                    </div>
+                  </div>
+                  <div class='crd-description'>
+                    <p>{{ e.pengalamanSwab }}</p>
                   </div>
                 </div>
-                <div class='crd-description'>
-                  <p>{{ experience.pengalaman }}</p>
-                </div>
+                {% endfor %}
               </div>
-              {% endfor %}
             </div>
           </div>
         </div>
       </div>
     </div>
     {% endblock content %}
-    {% block js %} <script src="{% static 'js/swab_vaksin.js' %}"></script> {% endblock js %}
   </body>
 </html>

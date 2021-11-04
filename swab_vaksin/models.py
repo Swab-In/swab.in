@@ -17,8 +17,16 @@ class VaksinInformation(models.Model):
     deskripsi = models.TextField(max_length=500, default='-')
     gambar = models.ImageField(upload_to='static/images/', default='static\images\iVaksin.jpg')
 
-class Experience(models.Model):
+class SwabExperience(models.Model):
+    swab_id = models.ForeignKey(SwabInformation, on_delete=models.RESTRICT)
     penulis = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE
     )
-    pengalaman = models.TextField(max_length=300)
+    pengalamanSwab = models.TextField(max_length=300)
+
+class VaksinExperience(models.Model):
+    vaksin_id = models.ForeignKey(VaksinInformation, on_delete=models.RESTRICT)
+    penulis = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE
+    )
+    pengalamanVaksin = models.TextField(max_length=300)

@@ -1,9 +1,9 @@
-from django.http.response import HttpResponseRedirect
-
-from swab_vaksin.models import SwabInformation, VaksinInformation, Experience
-from swab_vaksin.forms import PengalamanForm
-from django.shortcuts import render
 from django.contrib.auth.models import User
+from django.shortcuts import render
+from .models import *
+from .forms import *
+from django.http import HttpResponseRedirect
+from django.views.generic import ListView, DetailView
 
 def index(request):
     swabInformations = SwabInformation.objects.all()
@@ -14,22 +14,69 @@ def index(request):
         'vaksinInformations': vaksinInformations,
         }
     
-    return render(request, 'list_vaksin_swab.html', response)
+    return render(request, "list_vaksin_swab.html", response)
 
-def informasi(request):
-    experiences = Experience.objects.all()
+def informasiSwab(request):
+    swabExperiences = SwabExperience.objects.all()
     response = {
-        'experiences': experiences, 
+        'swabExperiences': swabExperiences, 
         }
 
-    form =  PengalamanForm(request.POST or None)
+    form =  PengalamanSwabForm(request.POST or None)
 
     if (form.is_valid() and request.method == 'POST'):
-        pengalaman = Experience.objects.create(penulis = User.objects.get(pk=request.user.id), 
+        pengalaman = SwabExperience.objects.create(penulis = User.objects.get(pk=request.user.id), 
         pengalaman = form.cleaned_data["pengalaman"])
         pengalaman.save()
         return HttpResponseRedirect('/swab-vaksin/informasi')
     
     response['form']= form
 
-    return render(request, 'informasi_vaksin_swab.html', response)
+    return render(request, "info_swab.html", response)
+
+def informasiVaksin(request):
+    vaksinExperiences = VaksinExperience.objects.all()
+    response = {
+        'vaksinExperiences': vaksinExperiences, 
+        }
+
+    form =  PengalamanVaksinForm(request.POST or None)
+
+    if (form.is_valid() and request.method == 'POST'):
+        pengalaman = VaksinExperience.objects.create(penulis = User.objects.get(pk=request.user.id), 
+        pengalaman = form.cleaned_data["pengalaman"])
+        pengalaman.save()
+        return HttpResponseRedirect('/swab-vaksin/informasi')
+    
+    response['form']= form
+
+    return render(request, "info_vaksin.html", response)
+
+class InfoList(ListView):
+    model = SwabInformation, VaksinInformation
+    template_name = "templates/list_vaksin_swab.html"
+
+class InfoDetailSwab(DetailView):
+    model = SwabInformation
+    context_object_name = 'informasi_swab'
+    form = PengalamanSwabForm
+    template_name = "info_swab.html"
+    
+    def get_context_data(self, **kwargs):
+        ctx = super(InfoDetailSwab, self).get_context_data(**kwargs)
+        ctx['sExperience'] = SwabExperience.objects.all().filter(swab_id=ctx['informasi_swab'].pk)
+        ctx['form'] = PengalamanSwabForm
+        print(ctx['sExperience'])
+        return ctx
+
+class InfoDetailVaksin(DetailView):
+    model = VaksinInformation
+    context_object_name = 'informasi_vaksin'
+    form = PengalamanVaksinForm
+    template_name = "info_vaksin.html"
+    
+    def get_context_data(self, **kwargs):
+        ctx = super(InfoDetailVaksin, self).get_context_data(**kwargs)
+        ctx['vExperience'] = VaksinExperience.objects.all().filter(vaksin_id=ctx['informasi_vaksin'].pk)
+        print(ctx['vExperience'])
+        return ctx

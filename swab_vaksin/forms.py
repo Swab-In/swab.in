@@ -1,8 +1,12 @@
 from django import forms
-from django.forms.widgets import Textarea
-from swab_vaksin.models import SwabInformation, VaksinInformation, Experience
+from swab_vaksin.models import *
 
-class PengalamanForm(forms.ModelForm):
+class PengalamanSwabForm(forms.ModelForm):
     class Meta:
-        model = Experience
-        fields = ['pengalaman']
+        model = SwabExperience
+        fields = ['pengalamanSwab']
+
+class PengalamanVaksinForm(forms.ModelForm):
+    class Meta:
+        model = VaksinExperience
+        fields = ['pengalamanVaksin']
