@@ -6,4 +6,4 @@ class Pesan(models.Model):
     last = models.CharField(max_length=30)
     email = models.CharField(max_length=30)
     no_hp = models.CharField(max_length=30)
-    message = models.CharField(max_length=1000)
+    message = models.TextField()

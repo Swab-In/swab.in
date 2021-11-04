@@ -113,7 +113,7 @@ section .container .contactForm .formBox .inputBox textarea {
 }
 
 section .container .contactForm .formBox .inputBox textarea {
-    min-height: 120px;
+    max-height: 100px;
 }
 
 section .container .contactForm .formBox .inputBox span {
