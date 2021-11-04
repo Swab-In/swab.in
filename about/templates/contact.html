@@ -70,7 +70,7 @@ Contact Us
 {% endblock content %}
 
 {% block js %}
-{% if not user.is_authenticated %}
+{% if not user.is_superuser %}
 <script src="{% static 'js/hilang.js' %}"></script>
 {% endif %}
 <script src="{% static 'js/contact.js' %}"></script>
