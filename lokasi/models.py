@@ -4,8 +4,8 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 
 class Post(models.Model):
-    title = models.CharField(max_length=100)
-    content = models.TextField()
+    lokasi = models.CharField(max_length=100)
+    detail = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
     lokasi_pic = models.ImageField(null=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
