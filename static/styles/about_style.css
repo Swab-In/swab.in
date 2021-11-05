@@ -1,0 +1,241 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #EAECED;
+}
+
+.section {
+    width:100%;
+}
+
+.section .container {
+    width:80%;
+    display: block;
+    margin: 0px auto;
+    padding:50px 0px;
+}
+
+.container .title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.container .title h1 {
+    text-transform: uppercase;
+    font-size: 35px;
+    color: #073E50;
+}
+
+.container .title h1::after {
+    content: "";
+    height: 5px;
+    width: 100px;
+    background-color: #073E50;
+    border-radius: 25px;
+    display: block;
+    margin: auto;
+}
+
+.content {
+    float: left;
+    width: 55%;
+}
+
+.image-section {
+    float: right;
+    width:40%;
+}
+
+.image-section img {
+    width: 100%;
+    height: auto;
+}
+
+.content .article p {
+    font-size: 17px;
+}
+
+.content .article .button1 {
+    margin-top: 30px;
+}
+
+.content .article .button1 a {
+    text-decoration: none;
+    cursor: pointer;
+    padding: 4px 25px;
+    background-color: rgb(77, 131, 231);
+    border-radius: 8px;
+    color: white;
+    font: 18px;
+    letter-spacing: 1.5px;
+    max-width: 150px;
+    padding: 12px
+}
+
+.container .pesan {
+    width: 100%;
+    clear: both;
+    margin-top: 70px;
+    text-align: center;
+    display: inline-block;
+}
+
+.container .pesan h3 {
+    font-size: 24px;
+    color: #073E50;
+}
+
+.container .pesan .button2 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 12px;
+}
+
+.container .pesan .button2 a {
+    text-decoration: none;
+    padding: 8px 25px;
+    background-color: rgb(77, 131, 231);
+    border-radius: 8px;
+    color: white;
+    font: 18px;
+    letter-spacing: 1.5px;
+    max-width: 150px;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+
+.popup-box {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 500;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.popup-box.open {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup-box .popup-content {
+    background-color:#EAECED;
+    width: 600px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 8px;
+}
+
+.popup-box .popup-header {
+    padding: 15px 40px 15px 15px;
+    color: #073E50;
+    border-bottom: 1px solid #073E50;
+}
+
+.popup-box .popup-header h3 {
+    margin: 0;
+    color: #073E50;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.popup-box .popup-body {
+    padding: 15px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.popup-box .popup-footer {
+    padding: 15px;
+    border-top: 1px solid #073E50;
+    text-align: center;
+}
+
+.popup-box .popup-footer .btn {
+    padding: 8px 15px;
+    border: 1px solid rgb(77, 131, 231);
+    color: white;
+    background-color: rgb(77, 131, 231);
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.popup-box .popup-footer .btn:focus {
+    outline: none;
+}
+
+@media screen and (max-width: 768px) {
+    .section .container {
+        width: 80%;
+        display: block;
+        margin: auto;
+    }
+
+    .section .container .content {
+        float: none;
+        width: 100%;
+        display: block;
+        margin: auto;
+    }
+
+    .section .container .image-section {
+        float: none;
+        width: 100%;
+        margin-top: 50px;
+    }
+
+    .section .container .image-section img {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin: auto;
+    }
+
+    .section .container .title h1 {
+        text-align: center;
+        font-size: 30px;
+    }
+
+    .section .container .content .article .button1 {
+        text-align: center;
+    }
+
+    .section .container .content .article .button1 a {
+        padding: 6px 15px;
+        font-size: 16px;
+    }
+
+    .section .container .pesan h3 {
+        font-size: 19px;
+        width: 100%;
+    }
+
+    .section .container .pesan .button2 {
+        text-align: center;
+    }
+
+    .section .container .pesan .button2 a {
+        padding: 6px 15px;
+        font-size: 16px;
+    }
+
+    .popup-box .popup-content{
+        width: calc(100% - 30px);
+    }
+}
