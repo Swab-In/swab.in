@@ -7,7 +7,7 @@ class SwabInformation(models.Model):
     akurasi = models.CharField(max_length=30, default='-')
     prosedur = models.CharField(max_length=50, default='-')
     deskripsi = models.TextField(max_length=500, default='-')
-    gambar = models.ImageField(upload_to='static/images/', default='static\images\iSwab.jpg')
+    gambar = models.ImageField(upload_to='static/images/', default='static/images/Swab.jpg')
 
 class VaksinInformation(models.Model):
     nama = models.CharField(max_length=25, default='-')    
@@ -15,7 +15,7 @@ class VaksinInformation(models.Model):
     frekuensi = models.CharField(max_length=30, default='-')
     efikasi = models.CharField(max_length=30, default='-')    
     deskripsi = models.TextField(max_length=500, default='-')
-    gambar = models.ImageField(upload_to='static/images/', default='static\images\iVaksin.jpg')
+    gambar = models.ImageField(upload_to='static/images/', default='static/images/iVaksin.jpg')
 
 class SwabExperience(models.Model):
     swab_id = models.ForeignKey(SwabInformation, on_delete=models.RESTRICT)
