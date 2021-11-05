@@ -39,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'swabIn',
     'artikel',
+    'lokasi',
+    'crispy_forms',
+    'user',
+    'about',
 ]
 
 MIDDLEWARE = [
@@ -138,3 +142,5 @@ django_heroku.settings(locals())
 # https://warehouse.python.org/project/whitenoise/
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
