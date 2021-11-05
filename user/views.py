@@ -10,25 +10,6 @@ from django.contrib import messages
 from django.http import JsonResponse
 import json
 
-# def Userlogin(request):
-#     form = UserLoginForm()
-#     data = {
-#         'form':form,
-#     }
-#     if request.method == 'POST':
-#         username = request.POST.get('username')
-#         password = request.POST.get('password')
-#         print(username, password)
-#         user = authenticate(request,username=username, password=password)
-
-#         if user is not None:
-#             login(request, user)
-#             return JsonResponse({"status":"User Login Success"})
-#             # return redirect('Landing Page')
-#         else:
-#             return JsonResponse({"status":"Invalid Credential"})
-
-
 def Userlogout(request):
     logout(request)
     messages.info(request, "You have successfully logged out.")

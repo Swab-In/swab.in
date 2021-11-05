@@ -38,7 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'swabIn',
+<<<<<<< HEAD
     'user',
+=======
+    'about',
+>>>>>>> 27f45570fba4fa5c1db77419e7038d1e197a903e
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'styles/about_style.css' %}">
+{% endblock css %}
+
+{% block title %}
+About Us
+{% endblock title %}
+
+{% block content %}
+
+<div class="section">
+    <div class="container">
+        <div class="title">
+            <h1>About Us</h1>
+        </div>
+        <div class="content">
+            <div class="article">
+                <p align=justify>
+                    Mobilitas merupakan kebutuhan dari setiap individu. Namun, di zaman pandemi ini, setiap orang yang
+                    akan
+                    melakukan mobilitas, khususnya dari satu daerah ke daerah lain dengan menggunakan transportasi umum
+                    memerlukan adanya surat bebas covid-19. Terlebih, masa berlaku surat bebas covid-19 pun umumnya
+                    tidak
+                    berlangsung lama. Selain itu, vaksinasi merupakan hal yang wajib dilakukan untuk melakukan
+                    mobilitas.
+                    Dalam hal ini, masalah yang sering dijumpai bagi individu yang ingin melakukan pemeriksaan bebas
+                    covid-19 adalah minimnya informasi mengenai tempat pemeriksaan covid-19 yang akan dituju maupun
+                    ingin
+                    dituju. Selain itu, masalah lain yang ditemui adalah beredarnya berita hoaks mengenai vaksin. Oleh
+                    karena itu, diperlukan adanya forum diskusi sebagai wadah untuk berbagi dan bertanya mengenai tempat
+                    pemeriksaan covid-19 dan edukasi mengenai vaksin covid-19.
+                </p>
+                <div class="button1">
+                    <a>Read More</a>
+                </div>
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="{% static 'images/logo.svg' %}" alt="">
+        </div>
+        <div class="pesan">
+            <h3>Ada yang ingin disampaikan?</h3>
+            <div class="button2">
+                <a>Contact Us!</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="popup-box">
+    <div class="popup-content">
+        <div class="popup-header">
+            <h3>About Us</h3>
+        </div>
+        <div class="popup-body">
+            <p>Mobilitas merupakan kebutuhan dari setiap individu. Namun, di zaman pandemi ini, setiap orang yang
+                akan melakukan mobilitas, khususnya dari satu daerah ke daerah lain dengan menggunakan transportasi
+                umum memerlukan adanya surat bebas covid-19. Terlebih, masa berlaku surat bebas covid-19 pun umumnya
+                tidak berlangsung lama. Selain itu, vaksinasi merupakan hal yang wajib dilakukan untuk melakukan
+                mobilitas. Dalam hal ini, masalah yang sering dijumpai bagi individu yang ingin melakukan
+                pemeriksaan bebas covid-19 adalah minimnya informasi mengenai tempat pemeriksaan covid-19 yang akan
+                dituju maupun ingin dituju. Selain itu, masalah lain yang ditemui adalah beredarnya berita hoaks
+                mengenai vaksin. Oleh karena itu, diperlukan adanya forum diskusi sebagai wadah untuk berbagi dan
+                bertanya mengenai tempat pemeriksaan covid-19 dan edukasi mengenai vaksin covid-19.
+            </p>
+            <p>
+                Dengan aplikasi ini, kami bertekad untuk membantu pemerintah dalam melakukan edukasi terkait vaksin
+                maupun membantu masyarakat yang ingin melakukan pemeriksaan covid-19 dengan cara memberikan ruang
+                diskusi terkait tempat pemeriksaan covid-19 sehingga pengguna dapat membantu satu sama lain terkait
+                informasi suatu tempat covid-19.
+            </p>
+            <div class="madeby">
+                <p>Dibuat oleh:</p>
+                <p>Kelompok B10</p>
+                <ul>
+                    <li>Fitri ‘Aliyah - 2006597115</li>
+                    <li>Paskah Ponchius Kristian - 2006597172</li>
+                    <li>Alviona Retno Amalia - 2006597475</li>
+                    <li>Umar Izzuddin - 2006597424</li>
+                    <li>Nyoman Bagus Nuartha Dananjaya - 2006597153</li>
+                    <li>M. Faiq Hilmi Musyaffa - 2006597273</li>
+                    <li>Salmadea Fahira Risyani - 2006597355</li>
+                </ul>
+            </div>
+        </div>
+        <div class="popup-footer">
+            <button class="btn popup-close">Close</button>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block js %}
+<script src="{% static 'js/about.js' %}"></script>
+{% endblock js %}
