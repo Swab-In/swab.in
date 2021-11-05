@@ -21,7 +21,7 @@ class PostDetailView(DetailView):
 
 class PostCreateView(CreateView, LoginRequiredMixin):
     model = Post
-    fields = ['lokasi', 'detail']
+    fields = ['lokasi', 'detail', 'lokasi_pic']
 
     # Set current author
     def form_valid(self, form):
