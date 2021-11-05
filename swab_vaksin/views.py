@@ -40,10 +40,6 @@ class InfoDetailSwab(DetailView, FormMixin):
         else:
             return self.form_invalid(form)
     
-    def json(request):
-        data = serializers.serialize('json', SwabExperience.objects.all())
-        return HttpResponse(data, content_type="application/json")
-
     def form_valid(self, form, request, **kwargs):
         ctx = super(InfoDetailSwab, self).get_context_data(**kwargs)
         swab = SwabExperience.objects.create(
@@ -76,10 +72,6 @@ class InfoDetailVaksin(DetailView, FormMixin):
             return self.form_valid(form, request)
         else:
             return self.form_invalid(form)
-    
-    def json(request):
-        data = serializers.serialize('json', VaksinExperience.objects.all())
-        return HttpResponse(data, content_type="application/json")
 
     def form_valid(self, form, request, **kwargs):
         ctx = super(InfoDetailVaksin, self).get_context_data(**kwargs)
@@ -91,43 +83,10 @@ class InfoDetailVaksin(DetailView, FormMixin):
         vaksin.save()
         return super(InfoDetailVaksin, self).form_valid(form)
 
-# def informasiSwab(request):
-#     swabExperiences = SwabExperience.objects.all()
-#     response = {
-#         'swabExperiences': swabExperiences, 
-#         }
+def jsonVaksin(request):
+    data = serializers.serialize('json', VaksinExperience.objects.all())
+    return HttpResponse(data, content_type="application/json")
 
-#     form =  PengalamanSwabForm(request.POST or None)
-
-#     if (form.is_valid() and request.method == 'POST'):
-#         pengalaman = SwabExperience.objects.create(penulis = User.objects.get(pk=request.user.id), 
-#         pengalaman = form.cleaned_data["pengalaman"])
-#         pengalaman.save()
-#         return HttpResponseRedirect('/swab-vaksin/informasi')
-    
-#     response['form']= form
-
-#     return render(request, "info_swab.html", response)
-
-# def informasiVaksin(request):
-#     vaksinExperiences = VaksinExperience.objects.all()
-#     response = {
-#         'vaksinExperiences': vaksinExperiences, 
-#         }
-
-#     form =  PengalamanVaksinForm(request.POST or None)
-
-#     if (form.is_valid() and request.method == 'POST'):
-#         pengalaman = VaksinExperience.objects.create(penulis = User.objects.get(pk=request.user.id), 
-#         pengalaman = form.cleaned_data["pengalaman"])
-#         pengalaman.save()
-#         return HttpResponseRedirect('/swab-vaksin/informasi')
-    
-#     response['form']= form
-
-#     return render(request, "info_vaksin.html", response)
-
-# class InfoList(ListView):
-#     model = SwabInformation, VaksinInformation
-#     template_name = "templates/list_vaksin_swab.html"
-
+def jsonSwab(request):
+    data = serializers.serialize('json', SwabExperience.objects.all())
+    return HttpResponse(data, content_type="application/json")

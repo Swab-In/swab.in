@@ -64,21 +64,8 @@
           </div>
           <div class='contain-wrapper'>
             <div class='vaksin-experience'>
-              <div class='cards'>
-                {% for e in vExperience%}
-                <div class='card'>
-                  <div class='crd-header'>
-                    <div class='pImage'><img  src='' alt=''></div>
-                    <div class='pInformation' id='desc'>
-                      <h6>{{ e.penulis }}</h6>
-                      <p>Pekerjaan, umur</p>
-                    </div>
-                  </div>
-                  <div class='crd-description'>
-                    <p>{{ e.pengalamanVaksin }}</p>
-                  </div>
-                </div>
-                {% endfor %}
+              <div class='cards'>                
+                <!-- ajax -->
               </div>
             </div>
           </div>
@@ -86,5 +73,6 @@
       </div>
     </div>
     {% endblock content %}
+    {% block js %} <script src="{% static 'js/exp_vaksin_ajax.js' %}"></script> {% endblock js %}
   </body>
 </html>

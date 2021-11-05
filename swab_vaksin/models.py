@@ -20,13 +20,13 @@ class VaksinInformation(models.Model):
 class SwabExperience(models.Model):
     swab_id = models.ForeignKey(SwabInformation, on_delete=models.RESTRICT)
     penulis = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, to_field='username'
     )
     pengalamanSwab = models.TextField(max_length=300)
 
 class VaksinExperience(models.Model):
     vaksin_id = models.ForeignKey(VaksinInformation, on_delete=models.RESTRICT)
     penulis = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, to_field='username'
     )
     pengalamanVaksin = models.TextField(max_length=300)

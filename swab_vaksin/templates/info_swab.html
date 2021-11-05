@@ -64,20 +64,7 @@
           <div class='contain-wrapper'>
             <div class='swab-experience'>
               <div class='cards'>
-                {% for e in sExperience%}
-                <div class='card'>
-                  <div class='crd-header'>
-                    <div class='pImage'><img  src='' alt=''></div>
-                    <div class='pInformation' id='desc'>
-                      <h6>{{ e.penulis }}</h6>
-                      <p>Pekerjaan, umur</p>
-                    </div>
-                  </div>
-                  <div class='crd-description'>
-                    <p>{{ e.pengalamanSwab }}</p>
-                  </div>
-                </div>
-                {% endfor %}
+                <!-- ajax -->
               </div>
             </div>
           </div>
@@ -85,5 +72,6 @@
       </div>
     </div>
     {% endblock content %}
+    {% block js %} <script src="{% static 'js/exp_swab_ajax.js' %}"></script> {% endblock js %}
   </body>
 </html>
