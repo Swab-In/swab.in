@@ -12,16 +12,8 @@
     <title>Register Page</title>
 </head>
 <body>
-  {% if messages %}
-  <ul class="messages">
-    {% for message in messages %}
-    <li id="error_text" {% if message.tags %} class="text-{{ message.tags }}" {% endif %}> 
-      {{ message }} </li>
-    {% endfor %}
-  </ul>
-  {% endif %}
-  <p id="error"> </p>
     <div class="container">
+      <!-- <p id="error" class="text-white"> </p> -->
         <div class="row">
             <header>
                 <div class="row">
@@ -38,6 +30,7 @@
               <div class="card-body p-4 p-sm-5">
                 <form method="POST" action="{% url 'register' %}" id="registerForm">
                   {% csrf_token %}
+                  <p style="color:rgb(233, 43, 10);">{{ message }}</p>
                     <div class="form-floating mb-3">
                         <input type="name" class="form-control"  placeholder="your name" name="first_name" required>
                         <label for="floatingInput">Name</label>

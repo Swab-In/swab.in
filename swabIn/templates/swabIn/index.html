@@ -5,6 +5,15 @@
 Swab.In
 {% endblock title %}
 {% block content %}
+
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+    <li id="error_text" {% if message.tags %} class="text-{{ message.tags }}" {% endif %}> 
+      {{ message }} </li>
+    {% endfor %}
+  </ul>
+{% endif %}
 <div>
     Hello World!
 </div>
