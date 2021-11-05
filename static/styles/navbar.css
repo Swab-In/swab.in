@@ -25,6 +25,12 @@ nav h3 {
   cursor: pointer;
   transition: 0.2s ease-in-out;
 }
+
+a {
+  text-decoration:none!important;
+  color: black;
+}
+
 .login-btn:hover {
   color: white;
   background-color: #032260;
