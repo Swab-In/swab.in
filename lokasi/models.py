@@ -14,4 +14,4 @@ class Post(models.Model):
         return self.lokasi
 
     def get_absolute_url(self):
-        return reverse('lokasi')
+        return reverse('lokasi:lokasi')
