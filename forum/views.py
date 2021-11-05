@@ -51,7 +51,7 @@ class ForumDetail(DetailView, FormMixin, LoginRequiredMixin):
     
 def json(request):
     id = request.GET.get('id')
-    data = serializers.serialize('json', Komentar.objects.filter(forum_id=Forum.objects.filter(pk=int(id))[0]))
+    data = serializers.serialize('json', Komentar.objects.filter(forum_id=Forum.objects.filter(pk=int(id))[0]).order_by('-pk'))
     return HttpResponse(data, content_type="application/json")
 
 
