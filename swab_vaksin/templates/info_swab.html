@@ -41,17 +41,18 @@
                     <div class='profil'>
                       <div class='pImage'><img  src='' alt=''></div>
                       <div class='pInformation'>
-                        <h3>{{ form.penulis }}</h3>
+                        <h3>{{ informasi_swab.penulis }}</h3>
                         <h6>Pekerjaan, umur</h6>
                       </div>
                     </div>
-                    <div class='form'> 
-                      <form method='POST' action='{{ form }}' id='addPengalamanForm'>
+                    <div class='form'>  
+                      <form method='POST' action='' id='addPengalamanForm'>
                         {% csrf_token %}
-                        <div class='row mb-3 mx-4' style='height: 300px'>
-                          {{form.pengalamanSwab}}
-                        </div>
-                        <p id='inputForumId' class='visually-hidden'></p>
+                          <div class="row mb-3 mx-4">
+                              <textarea class="form-control" id="pengalamanSwab" placeholder="Tuliskan pengalaman Swabmu disini" 
+                              name="pengalamanSwab" style="height:300px;"></textarea>
+                          </div>
+                        <p id='addPengalamanForm' class='visually-hidden'></p>
                       </form>
                     </div>
                     <input type='submit' form='addPengalamanForm' class='btn submit-button fw-bold' value='Submit' data-bs-dismiss='modal' />
