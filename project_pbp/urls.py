@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(swabIn)),
     path('forum/', include('forum.urls')),
-    path('lokasi/', include(lokasi)),
+    path('lokasi/', include('lokasi.urls')),
     path('', include(user)),
     path('about/', include(about)),
 ]
