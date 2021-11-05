@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'styles/list.css' %}">
+{% endblock css %}
+
+{% block title %}
+List Message
+{% endblock title %}
+
+{% block content %}
+
+<h1 class="judul">
+    List Message
+</h1>
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Message</th>
+            </tr>
+        </thead>
+        <tbody id="container">
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
+
+{% block js %}
+<script src="{% static 'js/contact.js' %}"></script>
+{% endblock js %}

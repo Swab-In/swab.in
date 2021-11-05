@@ -18,6 +18,7 @@ from django.contrib import admin
 import swabIn.urls as swabIn
 import lokasi.urls as lokasi
 import user.urls as user
+import about.urls as about
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,4 +26,5 @@ urlpatterns = [
     path('forum/', include('forum.urls')),
     path('lokasi/', include(lokasi)),
     path('', include(user)),
+    path('about/', include(about)),
 ]
