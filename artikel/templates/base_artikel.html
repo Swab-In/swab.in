@@ -7,27 +7,61 @@
 <link rel="stylesheet" href="{% static 'base_artikel.css' %}">
 
 <div class="artikel"> 
+    <div class="d-flex justify-content-center container">
+        <h1> {{ artikel_detail.judul }} </h1>
+    </div>
 
-    <h1> {{ artikel_detail.judul }} </h1>
-    <img src= {{ artikel_detail.foto }} class="img-fluid" alt="Responsive image"> <br/>
+    <div class="foto">
+        <div class="d-flex justify-content-center container">
+            <img src= {{ artikel_detail.foto }} class="img-fluid" alt="Responsive image"> <br/>
+            <b> Penulis: {{ artikel_detail.author }} </b>
+        </div>
+    </div>
 
-    {{ artikel_detail.author }}
-    {{ artikel_detail.isi }}
-    
+
+    <div class="isi_artikel" style="text-align: justify;">
+        <div class="container1">
+            {{ artikel_detail.isi | linebreaks}}
+        </div>
+    </div>
+
     <h2>Komentar</h2>
-    
-    {% for i in komentar %}
-    
-    {% endfor %}
+    <div class="comments">
+        <div class="list_komentar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <!-- comment -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <form action="" method="POST">
         {% csrf_token %}
 
-        {{form}}
-        <div class="btn1">
-            <input type="submit" value="Submit">
+        <div class="container3" id="ngumpet">
+
+            <div class="box">
+                {{form.komen}}
+            </div>
+            
+            <div class="btn1">
+                <input type="submit" value="Submit">
+            </div>
+            
         </div>
     </form>
     
 </div>
 {% endblock content %}
+
+{% block js %}
+<script src="{% static 'js/get_comment.js' %}"></script>
+
+{% if not user.is_authenticated %}
+<script src="{% static 'js/auth.js' %}"></script>
+{% endif %}
+
+{% endblock js %}

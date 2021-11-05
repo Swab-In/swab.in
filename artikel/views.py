@@ -4,6 +4,8 @@ from .forms import CommentForm
 from django.http import HttpResponseRedirect
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import FormMixin
+from django.core import serializers
+from django.http.response import HttpResponse
 
 class HomeView(ListView):
     model = Post
@@ -40,3 +42,9 @@ class ArticleDetail(FormMixin, DetailView):
         print(komen)
         komen.save()
         return super(ArticleDetail, self).form_valid(form)
+
+# json
+def json(request):
+    data = serializers.serialize('json', Komentar.objects.all())
+    print(data)
+    return HttpResponse(data, content_type="application/json")
