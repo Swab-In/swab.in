@@ -17,7 +17,7 @@ from django.contrib.auth.models import User
 
 class PostListView(ListView):
     model = Post
-    template_name = 'lokasi/index.html'  # <app>/<model>_<viewtype>.html
+    template_name = 'lokasi/index.html'
     context_object_name = 'posts'
     ordering = ['-date_posted']
     paginate_by = 5
@@ -59,7 +59,7 @@ class PostDetailView(DetailView, FormMixin, LoginRequiredMixin):
 
 class PostCreateView(CreateView, LoginRequiredMixin):
     model = Post
-    fields = ['title', 'content']
+    fields = ['lokasi', 'detail']
 
     # Set current author
     def form_valid(self, form):
