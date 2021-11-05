@@ -1,16 +1,18 @@
 $(function () {
   var view = $(".komentar");
-
+  let loc = $(location).attr("href").split("/");
   $.ajax({
       type: 'GET',
-      url: '/forum/json',
+      url: '/forum/json_req',
       data: {
-      id: Number($(location).attr("href").substr(-1)),
+      id: Number(loc[loc.length - 1]),
     },
 
       success: function (data) {
           $.each(data, function (index, dictionary) {
+              
               var d = dictionary['fields'];
+              console.log('test')
              view.append(`
                <div class='bg-light text-dark row gx-4 gx-lg-5 pt-4 rounded'> \
               <div class='col-md-4 mb-3 w-100'> \
