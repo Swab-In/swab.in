@@ -51,7 +51,6 @@ def UserRegister(request):
         re_password = request.POST.get('password2')
 
         if form.is_valid():
-            print(form)
             user = form.save()
             login(request, user)
             messages.success(request, 'Selamat user berhasil dibuat!')

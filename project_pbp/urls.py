@@ -23,6 +23,8 @@ import swab_vaksin.urls as swab_vaksin
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(swabIn)),
+    path('forum/', include('forum.urls')),
+    path('lokasi/', include('lokasi.urls')),
     path('', include(user)),
     path('about/', include(about)),
     path('swab-vaksin/', include(swab_vaksin)),

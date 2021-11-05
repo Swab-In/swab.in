@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'styles/detail_forum.css' %}" />
+{% endblock css %}
+{% block title %}
+Forum | Detail
+{% endblock title %}
+
+
+{% block content %}
+<div class="container px-4 px-lg-5">
+    <!-- Heading Row-->
+    <div class="row gx-4 gx-lg-5  my-5">
+        <div class="col-lg-5"><img class="img-fluid rounded mb-4 mb-lg-0" src="{{ forum_detail.image }}" alt="..." />
+        </div>
+        <div class="col-lg-5 position-relative">
+            <h1 class="font-weight-light">{{ forum_detail.title }}</h1>
+            <h6>Ditulis oleh : {{ forum_detail.writer }} </h6>
+            <p>{{ forum_detail.message }}</p>
+            <div class="position-absolute bottom-0 end-0" style="width: 100%; display: flex; justify-content: end; ">
+                <a class="btn btn-primary" href="#!" data-bs-toggle="modal" data-bs-target="#addModal">Reply</a>
+            </div>
+
+        </div>
+    </div>
+    <h5>Replies: </h5>
+    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0" style="background-color: #4F85EB;">
+                <div class="modal-header border-0" style="height: 10px">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- <div class="row mb-3 mx-3">
+                        <p class="text-white"> {{ customuser.first_name }}
+                            <br> {{ customuser.pekerjaan }} {{ customuser.umur }}
+                        </p>
+                    </div> -->
+                    <form method="POST" action="" id="addThreadForm">
+                        {% csrf_token %}
+                        <div class="row mb-3 mx-4">
+                            <h3 style="color: white; margin-bottom: 2rem; resize: none !important;">Tuliskan Komentar Anda!</h3>
+                            <textarea no-resize class="form-control" id="komentar" placeholder="Tuliskan diskusi disini"
+                                name="komentar" style="height:300px;"></textarea>
+                        </div>
+                        <p id='inputForumId' class='visually-hidden'></p>
+                    </form>
+                </div>
+                <div class="modal-footer border-0">
+                    <input type="submit" form="addThreadForm" class="btn btn-submit btn btn-light fw-bold"
+                        value="Submit" data-bs-dismiss="modal" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Content Row-->
+
+    <div class="komentar " style="padding-top: 2rem;padding-bottom: 2rem; border-radius: 24px;">
+        <!-- Content will be get fetch by ajax -->
+    </div>
+    {% endblock content %}
+    {% block js %}
+    <script src="{% static 'js/forum_komentar.js' %}"></script>
+    {% endblock js %}

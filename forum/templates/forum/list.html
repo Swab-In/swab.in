@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<head>
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'styles/detail_forum.css' %}" />
+    {% endblock css %}
+    {% block title %}
+    Forum | Detail
+    {% endblock title %}
+</head>
+
+{% block content %}
+<ul>
+    {% for lst in object_list %}
+    <li>
+        <a href="{% url 'forum-detail' lst.pk %}">{{ lst.title }} - {{ lst.message }}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+
+{% endblock content %}

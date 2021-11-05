@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'swabIn',
+    'forum',
     'lokasi',
     'crispy_forms',
     'user',
