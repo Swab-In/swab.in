@@ -2,7 +2,7 @@ body {
   font-family: "Poppins", sans-serif;
 }
 nav {
-  background: #4f85eb;
+  background: #4f85eb !important;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   padding: 0.7rem;
   padding-left: 2rem;
@@ -47,3 +47,7 @@ a {
 .opt:hover{
     color: #032260;
 }
+
+/* nav div, nav img, nav h3{
+  background: #4f85eb !important;
+} */

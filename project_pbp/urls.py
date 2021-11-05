@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 import swabIn.urls as swabIn
+import artikel.urls as artikel
+import lokasi.urls as lokasi
 import user.urls as user
 import about.urls as about
 import swab_vaksin.urls as swab_vaksin
@@ -23,9 +25,10 @@ import swab_vaksin.urls as swab_vaksin
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(swabIn)),
-    path('forum/', include('forum.urls')),
-    path('lokasi/', include('lokasi.urls')),
+    path('artikel', include(artikel)),
+    path('lokasi/', include(lokasi)),
     path('', include(user)),
     path('about/', include(about)),
+    path('forum/', include('forum.urls')),
     path('swab-vaksin/', include(swab_vaksin)),
 ]
