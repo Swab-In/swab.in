@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'user',
     'about',
+    'swab_vaksin',
 ]
 
 MIDDLEWARE = [
