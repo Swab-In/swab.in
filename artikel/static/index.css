@@ -10,7 +10,7 @@
   }
   
   .main-container {
-    padding: 30px;
+    padding: 10px;
   }
   
   /* HEADING */
@@ -122,3 +122,11 @@
     }
   }
   
+h1 {
+  font-size: 600;
+  color:rgb(73, 131, 179)
+}
+
+.heading__title{
+  padding-top: 5px;
+}

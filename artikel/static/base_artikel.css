@@ -58,31 +58,16 @@ h2 {
 .container {
     flex-direction: column;
 }
+.cols{
+    width:60%;
+
+}
 
 .list_komentar{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 60%;
-}
-
-.user_name{
-    font-size:14px;
-    font-weight: bold;
-}
-.comments-list .media{
-    border-bottom: 1px dotted #ccc;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.comments {
-    width: 60%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    width:100%;
+    
+    display:flex;
+    justify-content:center;
 }
 
 .comments-list {
@@ -93,6 +78,20 @@ h2 {
     padding-bottom: 3px;
 }
 
-.media-body{
+.kotak {
+    border: 0.5px solid gray;
+    border-radius:8px;
+    margin: 0.5rem 0 0.5rem 0;
     width: 100%;
+    padding:0.5rem;
+    overflow-wrap: break-word;
+}
+
+h4 {
+    font-size: medium;
+    font-weight: bold;
+}
+
+p {
+    font: 12px;
 }

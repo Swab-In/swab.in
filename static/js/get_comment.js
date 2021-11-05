@@ -1,6 +1,6 @@
 $(function () {
 
-    var view = $('.list_komentar');
+    var view = $('.cols');
     // view.empty();
 
     $.ajax({
@@ -11,8 +11,6 @@ $(function () {
            //grep id from last character url
             var $id = $(location).attr('href').substr(-1);
 
-            console.log("dataadalah:"+ data)
-
             for (let i = 0; i < data.length; i++) {
                 console.log("MASUK SINII DONGG")
 
@@ -20,8 +18,8 @@ $(function () {
 
                 if(data[i].fields.post_id === Number($id)){
                     console.log("yey dh masuk")
-                    
-                    view.append( '<div class="comments-list"><div class="media"><div class="media-body"><h4 class="media-heading user_name">' + data[i].fields.user_id +'</h4> <p>' + data[i].fields.komen + ' </p></div></div></div>');
+                    // data[i].fields.user_id data[i].fields.komen
+                    view.append(' <div class="w-full pb-4" style=min-width:24rem"><div class="kotak"><h4>'+ data[i].fields.user_id + ' </h4><br><p>'+ data[i].fields.komen + '</p></div></div> ');
                 }
             }
         }

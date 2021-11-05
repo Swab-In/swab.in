@@ -13,4 +13,4 @@ class Post(models.Model):
 class Komentar(models.Model):
     post_id = models.ForeignKey(Post, on_delete=models.CASCADE)
     komen = models.TextField()
-    user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, to_field="username")

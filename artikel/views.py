@@ -24,7 +24,7 @@ class ArticleDetail(FormMixin, DetailView):
         return ctx
 
     def get_success_url(self):
-        return '/'
+        return self.request.path
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
