@@ -19,7 +19,7 @@ class ArticleDetail(FormMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         ctx = super(ArticleDetail, self).get_context_data(**kwargs)
-        ctx['komentar'] = Komentar.objects.all().filter(post_id=ctx['artikel_detail'].pk)
+        ctx['komentar'] = Comment.objects.all().filter(post_id=ctx['artikel_detail'].pk)
         ctx['form'] = CommentForm(initial={'post': self.object})
         return ctx
 
@@ -37,7 +37,7 @@ class ArticleDetail(FormMixin, DetailView):
     def form_valid(self, form, request, **kwargs):
         ctx = super(ArticleDetail, self).get_context_data(**kwargs)
         print(ctx)
-        komen = Komentar.objects.create(post_id = ctx['artikel_detail'],
+        komen = Comment.objects.create(post_id = ctx['artikel_detail'],
         komen = form.cleaned_data["komen"], user_id = request.user)
         print(komen)
         komen.save()
@@ -45,6 +45,6 @@ class ArticleDetail(FormMixin, DetailView):
 
 # json
 def json(request):
-    data = serializers.serialize('json', Komentar.objects.all())
+    data = serializers.serialize('json', Comment.objects.all())
     print(data)
     return HttpResponse(data, content_type="application/json")
