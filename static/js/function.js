@@ -1,31 +1,31 @@
-function redirectA() {
-  window.location.replace("about");
-}
+// function redirectA() {
+//   window.location.replace("about");
+// }
 
-function redirectI() {
-  window.location.replace("info");
-}
+// function redirectI() {
+//   window.location.replace("info");
+// }
 
-function redirectL() {
-  window.location.replace("lokasi");
-}
+// function redirectL() {
+//   window.location.replace("lokasi");
+// }
 
-function redirectK() {
-  window.location.replace("artikel");
-}
+// function redirectK() {
+//   window.location.replace("artikel");
+// }
 
-$('#about').click(function () {
-  redirectA();
-})
+// $('#about').click(function () {
+//   redirectA();
+// })
 
-$('#vaksin').click(function () {
-  redirectI();
-})
+// $('#vaksin').click(function () {
+//   redirectI();
+// })
 
-$('#swab').click(function () {
-  redirectL();
-})
+// $('#swab').click(function () {
+//   redirectL();
+// })
 
-$('#artikel').click(function () {
-  redirectK();
-})
+// $('#artikel').click(function () {
+//   redirectK();
+// })

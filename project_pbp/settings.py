@@ -39,10 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'swabIn',
     'artikel',
+    'forum',
     'lokasi',
     'crispy_forms',
     'user',
     'about',
+    'swab_vaksin',
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<html>
+  <head>
+    {% block css %} <link rel="stylesheet" href="{% static 'styles/vaksin_swab.css' %}" /> {% endblock css %}
+    {% block title %} Swab & Vaksin {% endblock title %}    
+  </head>
+  <body>
+    {% block content %}
+    <div class='container'>
+      <div class='contain-wrapper' id='info'>
+        <div class='swab-info'>
+          <div class='info-wrapper'>
+            <div class='iImage'> <img src='{{ informasi_swab.gambar.url }}' alt=''> </div>
+            <div class='iDescription'>
+              <div class='info-lengkap'>
+                <h3>{{ informasi_swab.nama }}</h3>
+                <p><span>Price</span>: {{ informasi_swab.price }}</p>
+                <p><span>Akurasi</span>: {{ informasi_swab.akurasi }}</p>
+                <p><span>Prosedur</span>: {{ informasi_swab.prosedur }}</p>
+                <p>{{ informasi_swab.deskripsi }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='experience-wrapper'>
+          <div class=experience-header>
+            <h3 class='title-pengalaman'>Pengalaman</h3>
+            <button type='button' class='btn btn-round btn-add' data-bs-toggle='modal' data-bs-target='#addModal'>+</button>
+          </div>
+          <div class='pop-up-form'>
+            <div class='modal fade' id='addModal' tabindex='-1' aria-labelledby='addModalLabel' aria-hidden='true'>
+              <div class='modal-dialog modal-dialog-centered'>
+                <div class='modal-content border-0'>
+                  <div class='modal-header border-0'>
+                    <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                  </div>
+
+                  <div class='modal-body'>
+                    <div class='form'>  
+                      <form method='POST' action='' id='addPengalamanForm'>
+                        {% csrf_token %}
+                          <div class="row mb-3 mx-4">
+                              <textarea class="form-control" id="pengalamanSwab" placeholder="Tuliskan pengalaman Swabmu disini" 
+                              name="pengalamanSwab" style="height:300px;"></textarea>
+                          </div>
+                        <p id='addPengalamanForm' class='visually-hidden'></p>
+                      </form>
+                    </div>
+                    <input type='submit' form='addPengalamanForm' class='btn submit-button fw-bold' value='Submit' data-bs-dismiss='modal' />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class='contain-wrapper'>
+            <div class='swab-experience'>
+              <div class='cards'>
+                <!-- ajax -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endblock content %}
+    {% block js %} <script src="{% static 'js/exp_swab_ajax.js' %}"></script> {% endblock js %}
+  </body>
+</html>
