@@ -14,14 +14,21 @@
                 About
             </div>
             <div class="opt">
-                Lokasi
+                <a href="lokasi/"> Lokasi </a>
             </div>
             <div class="opt">   
                 Artikel
             </div>
+            {% if not user.is_authenticated %}
             <div class="login-btn">
-                LOGIN
+                <a href="login/"> LOGIN </a>
             </div>
+            {% else %}
+            <div class="login-btn">
+                <a href="logout/"> LOG OUT</a>
+            </div>
+            {% endif %}
+
         </div>
     </div>
 

@@ -21,5 +21,5 @@ import swab_vaksin.urls as swab_vaksin
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(swabIn)),
-    path('swab-vaksin/', include(swab_vaksin))
+    path('swab-vaksin/', include(swab_vaksin)),
 ]
