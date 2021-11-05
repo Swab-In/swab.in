@@ -11,13 +11,14 @@ from django.views.generic.edit import FormMixin
 from .models import Post
 from forum.models import Forum
 from forum.forms import ForumForm
-from django.http.response import HttpResponse
-from django.core import serializers
 from django.contrib.auth.models import User
+from django.core import serializers
+from django.http.response import HttpResponse
+
 
 class PostListView(ListView):
     model = Post
-    template_name = 'lokasi/index.html'  # <app>/<model>_<viewtype>.html
+    template_name = 'lokasi/index.html'  
     context_object_name = 'posts'
     ordering = ['-date_posted']
     paginate_by = 5
@@ -46,13 +47,15 @@ class PostDetailView(DetailView, FormMixin, LoginRequiredMixin):
 
     def form_valid(self, form, request, **kwargs):
         ctx = super(PostDetailView, self).get_context_data(**kwargs)
-        print(ctx)
         forum = Forum.objects.create(post_id = ctx['post_detail'],
         title = form.cleaned_data["title"],  message = form.cleaned_data["message"],
         image = form.cleaned_data["image"], writer = request.user)
-        print(forum)
         forum.save()
         return super(PostDetailView, self).form_valid(form)
+
+def json(request):
+    data = serializers.serialize('json', Forum.objects.all())
+    return HttpResponse(data, content_type="application/json")
 
 class PostCreateView(CreateView, LoginRequiredMixin):
     model = Post
@@ -62,3 +65,4 @@ class PostCreateView(CreateView, LoginRequiredMixin):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
