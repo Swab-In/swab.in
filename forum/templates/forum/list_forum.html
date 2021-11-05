@@ -15,15 +15,10 @@
 <body>
     {% block content %}
     <div class='container'>
-       <div class='contain-wrapper' id='info'>
+        <div class='contain-wrapper' id='info'>
             <div class='info-wrapper'>
-                <div class='iImage'><img src="{{ post_detail.lokasi_pic }}" alt=""></div>
-                <div class='iDescription'>
-                    <div class='info-lokasi'>
-                        <h3>{{ post_detail.lokasi }}</h3>
-                        <p>{{ post_detail.detail }}</p>
-                    </div>
-                </div>
+
+                
             </div>
 
             <div class='forum-wrapper'>
@@ -72,19 +67,19 @@
                     </div> -->
                     <form method="POST" action="" id="addThreadForm">
                         {% csrf_token %}
-                            <div class="row mb-3 mx-4">
-                                <input class="form-control" type="text" id="title" name="title" maxlength="30" placeholder="Judul"
-                                    aria-label="default input example">
-                            </div>
-                            <div class="row mb-3 mx-4">
-                                <textarea class="form-control" id="message" placeholder="Tuliskan diskusi disini" name="message"
-                                    style="height:200px;"></textarea>
-                            </div>
-                            <div class="row mb-3 mx-4">
-                                <input class="form-control" id="image" type="text" name="image" placeholder="URL thumbnail"
-                                    aria-label="default input example">
-                            </div>
-                            <p id='inputForumId' class='visually-hidden'></p>
+                        <div class="row mb-3 mx-4">
+                            <input class="form-control" type="text" id="title" name="title" maxlength="30"
+                                placeholder="Judul" aria-label="default input example">
+                        </div>
+                        <div class="row mb-3 mx-4">
+                            <textarea class="form-control" id="message" placeholder="Tuliskan diskusi disini"
+                                name="message" style="height:200px;"></textarea>
+                        </div>
+                        <div class="row mb-3 mx-4">
+                            <input class="form-control" id="image" type="text" name="image" placeholder="URL thumbnail"
+                                aria-label="default input example">
+                        </div>
+                        <p id='inputForumId' class='visually-hidden'></p>
                     </form>
                 </div>
                 <div class="modal-footer border-0">
@@ -96,6 +91,7 @@
     </div>
     {% endblock content %}
 </body>
-
+{% block js %}
+<script src="{% static 'js/detail_forum.js' %}"></script>
+{% endblock js %}
 </html>
-

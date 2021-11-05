@@ -44,9 +44,7 @@ class PostDetailView(DetailView, FormMixin, LoginRequiredMixin):
         else:
             return self.form_invalid(form)
     
-    def json(request):
-        data = serializers.serialize('json', Forum.objects.all())
-        return HttpResponse(data, content_type="application/json")
+
 
     def form_valid(self, form, request, **kwargs):
         ctx = super(PostDetailView, self).get_context_data(**kwargs)
@@ -65,3 +63,8 @@ class PostCreateView(CreateView, LoginRequiredMixin):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+def json(request):
+        id = request.GET.get('id')
+        data = serializers.serialize('json', Post.objects.filter(pk=int(id)))
+        return HttpResponse(data, content_type="application/json")
