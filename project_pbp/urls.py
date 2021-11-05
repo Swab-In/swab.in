@@ -18,10 +18,12 @@ from django.urls import path, include
 import swabIn.urls as swabIn
 import user.urls as user
 import about.urls as about
+import swab_vaksin.urls as swab_vaksin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(swabIn)),
     path('', include(user)),
     path('about/', include(about)),
+    path('swab-vaksin/', include(swab_vaksin)),
 ]
