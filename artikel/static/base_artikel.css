@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(224, 224, 224);
+}
+
+.artikel {
+    padding: 30px;
+    background-color: white;
+}
+
+img {
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 3px;
+}
+
+#id_komen{
+    padding: 5px;
+    width: 60% !important;
+    resize: none;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 4px;
+    max-height: 65px;
+    padding-top: 10px;
+}
+
+h2 {
+    padding-top: 5px;
+}
+
+.box, .btn1, h2, .isi_artikel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn1 {
+    padding-top: 5px;
+}
+
+.isi_artikel{
+    width: 100%;
+    font-size: medium;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container, .container1, .judul {
+    max-width: 60%;
+}
+
+.container {
+    flex-direction: column;
+}
+.cols{
+    width:60%;
+
+}
+
+.list_komentar{
+    width:100%;
+    
+    display:flex;
+    justify-content:center;
+}
+
+.comments-list {
+    width: 100%;
+}
+
+.card {
+    padding-bottom: 3px;
+}
+
+.kotak {
+    border: 0.5px solid gray;
+    border-radius:8px;
+    margin: 0.5rem 0 0.5rem 0;
+    width: 100%;
+    padding:0.5rem;
+    overflow-wrap: break-word;
+}
+
+h4 {
+    font-size: medium;
+    font-weight: bold;
+}
+
+p {
+    font: 12px;
+}

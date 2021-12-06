@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'styles/contact_style.css' %}">
+{% endblock css %}
+
+{% block title %}
+Contact Us
+{% endblock title %}
+
+{% block content %}
+<h1 class="judul">
+    Contact Us
+</h1>
+<h8>
+    Ada yang ingin disampaikan? Silahkan hubungi kami!
+</h8>
+
+<section>
+    <div class="container">
+        <div class="kotakbiru">
+            <div>
+                <img src="https://www.svgrepo.com/show/78381/mail.svg" alt="mail" style="width:250px;height:250px;">
+            </div>
+        </div>
+        <div class="contactForm">
+            <div class="list">
+                <button class="btn btn-outline-secondary" id="tomboladmin">
+                    List Message
+                </button>
+            </div>
+            <h2>Send a Message</h2>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="formBox">
+                    <div class="inputBox w50">
+                        {{ form.first }}
+                        <span>First Name</span>
+                    </div>
+                    <div class="inputBox w50">
+                        {{ form.last }}
+                        <span>Last Name</span>
+                    </div>
+                    <div class="inputBox w50">
+                        {{ form.email }}
+                        <span>Email Address</span>
+                    </div>
+                    <div class="inputBox w50">
+                        {{ form.no_hp }}
+                        <span>Phone Number</span>
+                    </div>
+                    <div class="inputBox w100">
+                        {{ form.message }}
+                        <span>Write your message here...</span>
+                    </div>
+                    <div class="inputBox w100">
+                        <div class="submit">
+                            <input type="submit" value="Send">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+
+{% block js %}
+{% if not user.is_superuser %}
+<script src="{% static 'js/hilang.js' %}"></script>
+{% endif %}
+<script src="{% static 'js/contact.js' %}"></script>
+{% endblock js %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Artikel
+{% endblock title %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'index.css' %}">
+
+<div class="heading">
+  <h1 class="heading__title">Artikel Swab.In</h1>
+</div>
+
+<div class="main-container">
+  <div class="cards">
+
+  {% for post in object_list %}
+
+      <div class="card card-1">
+        <div class="card__icon"></div>
+        <p class="card__exit"><i class="fas fa-times"></i></p>
+        <h2 class="card__title" href="#"> {{ post.judul }}</h2>
+        <img src= {{ post.foto }} class="img-fluid" alt="Responsive image">
+        <p class="card__apply">
+          <a class="card__link" href="{% url 'detailArtikel' post.pk %}">Selengkapnya <i class="fas fa-arrow-right"></i></a>
+        </p>
+      </div>
+
+        {% endfor %}
+      </div>
+    </div>
+
+  {% endblock content %}
+
+{% block js %}
+
+<!-- <script src="{% static 'js/artikel.js' %}"></script> -->
+
+{% endblock js %}
