@@ -57,5 +57,11 @@ def json_req(request):
     data = serializers.serialize('json', Komentar.objects.all())
     return HttpResponse(data, content_type="application/json")
 
+@csrf_exempt
+def json_forum(request):
+    # id = request.GET.get('id')
+    # print(id)
+    data = serializers.serialize('json', Forum.objects.all())
+    return HttpResponse(data, content_type="application/json")
 
 
