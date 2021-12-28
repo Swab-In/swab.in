@@ -70,6 +70,8 @@ CORS_ALLOW_METHODS = [
 'POST',
 ]
 
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_HEADERS = ["*"]
 
 ROOT_URLCONF = 'project_pbp.urls'
 
