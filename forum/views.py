@@ -9,6 +9,7 @@ from .forms import *
 from django.views.generic.edit import FormMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 
 def index(request):
     return render(request, 'forum/list_forum.html')
@@ -48,11 +49,12 @@ class ForumDetail(DetailView, FormMixin, LoginRequiredMixin):
          user_id = request.user)
         forum.save()
         return super(ForumDetail, self).form_valid(form)
-    
+
+@csrf_exempt
 def json_req(request):
-    id = request.GET.get('id')
-    print(id)
-    data = serializers.serialize('json', Komentar.objects.filter(forum_id=Forum.objects.filter(pk=int(id))[0]).order_by('-pk'))
+    # id = request.GET.get('id')
+    # print(id)
+    data = serializers.serialize('json', Komentar.objects.all())
     return HttpResponse(data, content_type="application/json")
 
 
