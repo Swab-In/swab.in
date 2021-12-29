@@ -10,6 +10,7 @@ from django.views.generic.edit import FormMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
+import json
 
 def index(request):
     return render(request, 'forum/list_forum.html')
@@ -56,6 +57,28 @@ def json_req(request):
     # print(id)
     data = serializers.serialize('json', Komentar.objects.all())
     return HttpResponse(data, content_type="application/json")
+
+@csrf_exempt
+def forum_content(request):
+    res = []
+    obj = Forum.objects.all()
+    for i in obj:
+        res.append( {
+            "title" : i.title,
+            "image" : i.image
+        })
+    res = json.dumps(res)
+
+
+    return HttpResponse(res, content_type='application/json')
+
+@csrf_exempt
+def komentar_post(request):
+    body_unicode = request.body.decode('utf-8')
+    body = json.loads(body_unicode)
+    content = body['title']
+    print(content)
+    return HttpResponse(status=201)
 
 
 
