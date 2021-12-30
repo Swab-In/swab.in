@@ -99,10 +99,20 @@ def komentar_post(request):
 
 @csrf_exempt
 def all_komentar(request):
-    komen = Komentar.objects.filter(forum_id=2)
-    data = serializers.serialize('json', komen)
 
-    return HttpResponse(data, content_type='application/json')
+    komen = Komentar.objects.filter(forum_id=1)
+
+    res = []
+
+    for i in komen:
+        res.append({
+            "komentar" : i.komentar,
+            "user_id" : i.user_id.username,
+        })
+
+    res = json.dumps(res)
+
+    return HttpResponse(res, content_type='application/json')
 
 
 
