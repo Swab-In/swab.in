@@ -8,21 +8,55 @@
         </div>
         <div class="d-flex flex-col align-items-center">
             <div class="opt">
-                Swab & Vaksin
+                <div onClick="redirects('swab-vaksin')"> Swab & Vaksin </div>
+            </div>
+
+            <div class="opt">
+                <div onClick="redirects('about')"> About </div>
             </div>
             <div class="opt">
-                About
+                <div onClick="redirects('lokasi')"> Lokasi </div>
             </div>
             <div class="opt">
-                Lokasi
+                <a href="../artikel">Artikel</a>
             </div>
-            <div class="opt">
-                Artikel
-            </div>
+            {% if not user.is_authenticated %}
             <div class="login-btn">
-                LOGIN
+                <div onClick="redirects('login')"> LOGIN </div>
             </div>
+            {% else %}
+            <div class="login-btn">
+                <div onClick="redirects('logout')"> LOG OUT</div>
+            </div>
+            {% endif %}
+
         </div>
     </div>
+    <script>
+        function redirects(params) {
+            console.log(window.location.host)
+            switch (params) {
+                case "about":
+                    window.location = `http://${window.location.host}/about`
+                    break;
+                case "lokasi":
+                    window.location = `http://${window.location.host}/lokasi`
+                    break;
+                case "logout":
+                    window.location = `http://${window.location.host}/logout`
+                    break;
+                case "login":
+                    window.location = `http://${window.location.host}/login`
+                    break;
+                case "swab-vaksin":
+                    window.location = `http://${window.location.host}/swab-vaksin`
+                    break;
+            }
+        }
+    </script>
 
 </nav>
+
+{% block js %}
+
+{% endblock js %}
