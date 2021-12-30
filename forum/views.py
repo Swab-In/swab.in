@@ -101,9 +101,7 @@ def komentar_post(request):
 def all_komentar(request):
     komen = Komentar.objects.filter(forum_id=2)
     data = serializers.serialize('json', komen)
-    for i in komen:
-        print(i.pk)
-        print(i.user_id)
+
     return HttpResponse(data, content_type='application/json')
 
 
