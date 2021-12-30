@@ -76,7 +76,7 @@ def add_forum(request):
 
     users = get_user_model().objects.all()
     for j in users:
-        if j.pk == newData["writer"]:
+        if j.username == newData["writer"]:
             get_writer = j
 
     obj = Post.objects.all()

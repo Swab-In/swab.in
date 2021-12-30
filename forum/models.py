@@ -5,7 +5,7 @@ from lokasi.models import Post
 # Create your models here.
 class Forum(models.Model):
     writer = models.ForeignKey(
-      settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True
+      settings.AUTH_USER_MODEL, on_delete=models.CASCADE, to_field='username'
     )
     title = models.CharField(max_length=30)
     message = models.TextField()
