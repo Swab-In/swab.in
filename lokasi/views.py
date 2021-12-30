@@ -65,7 +65,7 @@ class PostCreateView(CreateView, LoginRequiredMixin):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-@csrf_exempt
 def json(request):
-        data = serializers.serialize('json', Post.objects.all())
-        return HttpResponse(data, content_type="application/json")
+    id = request.GET.get('id')
+    data = serializers.serialize('json', Post.objects.filter(pk=int(id)))
+    return HttpResponse(data, content_type="application/json")

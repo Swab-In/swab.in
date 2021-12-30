@@ -1,15 +1,18 @@
+from django.contrib.auth import get_user_model
 from django.shortcuts import render
+
 from .models import Forum, Komentar
 from .forms import ForumForm
 from django.http import HttpResponseRedirect
 from django.views.generic import ListView, DetailView
 from django.core import serializers
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse, JsonResponse
 from .forms import *
 from django.views.generic.edit import FormMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
+import json 
 
 def index(request):
     return render(request, 'forum/list_forum.html')
@@ -59,9 +62,34 @@ def json_req(request):
 
 @csrf_exempt
 def json_forum(request):
-    # id = request.GET.get('id')
-    # print(id)
     data = serializers.serialize('json', Forum.objects.all())
     return HttpResponse(data, content_type="application/json")
 
+@csrf_exempt
+def json_lokasi(request):
+    data = serializers.serialize('json', Post.objects.all())
+    return HttpResponse(data, content_type="application/json")
 
+@csrf_exempt
+def add_forum(request):
+    newData = json.loads(request.body.decode('utf-8'))
+
+    users = get_user_model().objects.all()
+    for j in users:
+        if j.pk == newData["writer"]:
+            get_writer = j
+
+    obj = Post.objects.all()
+    for i in obj:
+        if i.pk == newData["post_id"]:
+            get_post = i
+
+    new_forum = Forum(
+        title = newData['title'],
+        message = newData['message'],
+        image = newData['image'],
+        writer = get_writer,
+        post_id = get_post)
+
+    new_forum.save()
+    return JsonResponse({"instance": "Forum Disimpan"}, status=200)
