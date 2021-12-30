@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from .models import Forum, Komentar
-from .forms import ForumForm
-from django.http import HttpResponseRedirect
+from artikel.models import Post as P
 from django.views.generic import ListView, DetailView
 from django.core import serializers
 from django.http.response import HttpResponse
@@ -11,6 +10,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 import json
+from django.contrib.auth import get_user_model
 
 def index(request):
     return render(request, 'forum/list_forum.html')
@@ -53,19 +53,23 @@ class ForumDetail(DetailView, FormMixin, LoginRequiredMixin):
 
 @csrf_exempt
 def json_req(request):
-    # id = request.GET.get('id')
-    # print(id)
-    data = serializers.serialize('json', Komentar.objects.all())
+    id = request.GET.get('id')
+    print(id)
+    data = serializers.serialize('json', Komentar.objects.filter(pk=id))
     return HttpResponse(data, content_type="application/json")
 
 @csrf_exempt
 def forum_content(request):
     res = []
-    obj = Forum.objects.all()
+    obj = Forum.objects.filter(pk=1)
     for i in obj:
-        res.append( {
+        print(i.writer)
+        res.append({
+            "writer" : i.writer.username,
             "title" : i.title,
-            "image" : i.image
+            "content" : i.message,
+            "image" : i.image,
+
         })
     res = json.dumps(res)
 
@@ -75,10 +79,32 @@ def forum_content(request):
 @csrf_exempt
 def komentar_post(request):
     body_unicode = request.body.decode('utf-8')
+
     body = json.loads(body_unicode)
-    content = body['title']
-    print(content)
+
+    comment = body['komentar']
+    forum_id = body['forumId']
+    user_id = body['userId']
+
+    forum = Forum.objects.filter(pk=forum_id)[0]
+
+    User = get_user_model()
+
+    users = User.objects.filter(id=user_id)[0]
+    
+    komentar = Komentar.objects.create(forum_id = forum, komentar=comment, user_id = users)
+    komentar.save()
+
     return HttpResponse(status=201)
+
+@csrf_exempt
+def all_komentar(request):
+    komen = Komentar.objects.filter(forum_id=2)
+    data = serializers.serialize('json', komen)
+    for i in komen:
+        print(i.pk)
+        print(i.user_id)
+    return HttpResponse(data, content_type='application/json')
 
 
 

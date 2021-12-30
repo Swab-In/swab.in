@@ -10,5 +10,6 @@ urlpatterns = [
     path('detail/<int:pk>', ForumDetail.as_view(), name='forum-detail'),
     path('json_req', json_req, name="json_req"),
     path('forum_content', forum_content, name="forum_content"),
-    path('komentar_post', komentar_post, name="post_komentar")
+    path('komentar_post', komentar_post, name="post_komentar"),
+    path('get_komentar', all_komentar, name="all_komentar"),
 ]
