@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<html>
+
+<head>
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'styles/list_forum.css' %}" />
+    {% endblock css %}
+    {% block title %}
+    Forum
+    {% endblock title %}
+</head>
+
+<body>
+    {% block content %}
+    <div class='container'>
+        <div class='contain-wrapper' id='info'>
+            <div class='info-wrapper'>
+
+                
+            </div>
+
+            <div class='forum-wrapper'>
+                <div class='forum-header'>
+                    <h3 class='title-forum'>Forum Diskusi</h3>
+                    <button type="button" class="button buttonadd" data-bs-toggle="modal"
+                        data-bs-target="#addModal">+</button>
+                </div>
+
+                <div class='contain-wrapper'>
+                    <div class='cards'>
+                        {% for f in forum %}
+                        <div class='card'>
+                            <div class='crd-header'>
+                                <div class='pImage'><img src="{{f.image}}" alt=""></div>
+                                <div class='pInformation' id='desc'>
+                                    <h5 class="fw-bold">{{ f.title }}</h5>
+                                    <h7>Ditulis oleh: {{ f.writer }} </h7>
+                                </div>
+                            </div>
+                            <div class='crd-description'>
+                                <p>{{ f.message }}</p>
+                            </div>
+                            <div class='crd-btn'>
+                                <a href="{% url 'forum:forum-detail' f.pk %}">Read More</h6></a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0" style="background-color: #4F85EB;">
+                <div class="modal-header border-0" style="height: 10px">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- <div class="row mb-3 mx-3">
+                        <p class="text-white"> {{ customuser.first_name }}
+                            <br> {{ customuser.pekerjaan }} {{ customuser.umur }}
+                        </p>
+                    </div> -->
+                    <form method="POST" action="" id="addThreadForm">
+                        {% csrf_token %}
+                        <div class="row mb-3 mx-4">
+                            <input class="form-control" type="text" id="title" name="title" maxlength="30"
+                                placeholder="Judul" aria-label="default input example">
+                        </div>
+                        <div class="row mb-3 mx-4">
+                            <textarea class="form-control" id="message" placeholder="Tuliskan diskusi disini"
+                                name="message" style="height:200px;"></textarea>
+                        </div>
+                        <div class="row mb-3 mx-4">
+                            <input class="form-control" id="image" type="text" name="image" placeholder="URL thumbnail"
+                                aria-label="default input example">
+                        </div>
+                        <p id='inputForumId' class='visually-hidden'></p>
+                    </form>
+                </div>
+                <div class="modal-footer border-0">
+                    <input type="submit" form="addThreadForm" class="btn btn-submit fw-bold" value="Submit"
+                        data-bs-dismiss="modal" />
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock content %}
+</body>
+{% block js %}
+<script src="{% static 'js/detail_forum.js' %}"></script>
+{% endblock js %}
+</html>

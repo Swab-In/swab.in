@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %} SwabIn - Lokasi {% endblock title %}
+{% block title %} Lokasi {% endblock title %}
 
 {% block content %}
     <main role="main" class="container">
@@ -13,7 +13,7 @@
                             <a class="mr-2" href="#">{{ post.author }}</a>
                             <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
                         </div>
-                        <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.lokasi }}</a></h2>
+                        <h2><a class="article-title" href="{% url 'lokasi:post-detail' post.id %}">{{ post.lokasi }}</a></h2>
                         <p class="article-content">{{ post.detail }}</p>
                     </div>
                     </article>
@@ -46,7 +46,7 @@
             <div class="col-md-4">
                 <div class="content-section">
                     <h4>Mempunyai rekomendasi lokasi lain?</h4>
-                    <a class="btn btn-primary" href="{% url 'post-create' %}" role="button">Rekomendasikan dan Tambah Lokasi</a>
+                    <a class="btn btn-primary" href="{% url 'lokasi:post-create' %}" role="button">Rekomendasikan dan Tambah Lokasi</a>
                 </div>
               </div>
         </div>
@@ -56,3 +56,7 @@
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'lokasi/main.css' %}" />
 {% endblock css %}
+
+{% block js %}
+<script src="{% static 'forum/static/js/list_forum.js' %}"></script>
+{% endblock js %}
