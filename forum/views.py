@@ -128,12 +128,3 @@ def all_komentar(request):
     return HttpResponse(res, content_type='application/json')
 
 
-    new_forum = Forum(
-        title = newData['title'],
-        message = newData['message'],
-        image = newData['image'],
-        writer = get_writer,
-        post_id = get_post)
-
-    new_forum.save()
-    return JsonResponse({"instance": "Forum Disimpan"}, status=200)
