@@ -60,16 +60,19 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 ]
 
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_HEADERS = ["*"]
+CORS_ORIGIN_ALLOW_ALL = True
+
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",
     "http://127.0.0.1:8000",
 ]
 
 CORS_ALLOW_METHODS = [
-'GET',
-'POST',
+    'GET',
+    'POST',
 ]
-
 
 ROOT_URLCONF = 'project_pbp.urls'
 
