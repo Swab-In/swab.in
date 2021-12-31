@@ -1,15 +1,13 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.views.decorators.csrf import csrf_exempt
 from user.models import CustomUser
-from django.contrib.auth import authenticate, get_user_model, login, logout
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 # Create your views here.
 from .forms import UserRegistrationForm
 from django.contrib import messages
 from django.http import JsonResponse
 import json
-from django.core import serializers
 
 def Userlogout(request):
     logout(request)

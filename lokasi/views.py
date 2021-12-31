@@ -14,7 +14,6 @@ from forum.forms import ForumForm
 from django.http.response import HttpResponse
 from django.core import serializers
 from django.contrib.auth.models import User
-from django.views.decorators.csrf import csrf_exempt
 
 class PostListView(ListView):
     model = Post
