@@ -6,6 +6,8 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import FormMixin
 from django.core import serializers
 from django.http.response import HttpResponse
+import json
+from django.views.decorators.csrf import csrf_exempt
 
 class HomeView(ListView):
     model = Post
@@ -44,7 +46,24 @@ class ArticleDetail(FormMixin, DetailView):
         return super(ArticleDetail, self).form_valid(form)
 
 # json
-def json(request):
+def json_req(request):
     data = serializers.serialize('json', Comment.objects.all())
     print(data)
     return HttpResponse(data, content_type="application/json")
+
+@csrf_exempt
+def artikel_content(request):
+    res = []
+    obj = Post.objects.all()
+
+    print('Something')
+    for i in obj:
+        res.append({
+            "judul" : i.judul,
+            "author" : i.author,
+            "foto" : i.foto,
+        })
+
+    res = json.dumps(res)
+
+    return HttpResponse(res, content_type='application/json')
