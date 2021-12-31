@@ -43,6 +43,7 @@ def authenticate_login(request):
     print(data)
     return JsonResponse(data)
 
+
 @csrf_exempt
 def UserRegister(request):
     data = {"status": "Registrasi gagal.", "success": False}
@@ -55,7 +56,7 @@ def UserRegister(request):
         # form = UserRegistrationForm(request.POST)
         # password = request.POST.get('password1')
         # re_password = request.POST.get('password2')
-
+        print(register_data)
         if form.is_valid():
             # user = form.save()
             form.save()
@@ -65,7 +66,6 @@ def UserRegister(request):
             data['status'] = "Registrasi berhasil."
             data['success'] = True
     return JsonResponse(data)
-
 
     #     if(password != re_password):
     #         response['message'] = 'Password tidak cocok.'
