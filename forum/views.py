@@ -127,4 +127,36 @@ def all_komentar(request):
 
     return HttpResponse(res, content_type='application/json')
 
+@csrf_exempt
+def json_forum(request):
+    data = serializers.serialize('json', Forum.objects.all())
+    return HttpResponse(data, content_type="application/json")
 
+@csrf_exempt
+def json_lokasi(request):
+    data = serializers.serialize('json', Post.objects.all())
+    return HttpResponse(data, content_type="application/json")
+
+@csrf_exempt
+def add_forum(request):
+    newData = json.loads(request.body.decode('utf-8'))
+
+    users = get_user_model().objects.all()
+    for j in users:
+        if j.username == newData["writer"]:
+            get_writer = j
+
+    obj = Post.objects.all()
+    for i in obj:
+        if i.pk == newData["post_id"]:
+            get_post = i
+
+    new_forum = Forum(
+        title = newData['title'],
+        message = newData['message'],
+        image = newData['image'],
+        writer = get_writer,
+        post_id = get_post)
+
+    new_forum.save()
+    return JsonResponse({"instance": "Forum Disimpan"}, status=200)
