@@ -10,7 +10,7 @@ from django.http import JsonResponse
 import json
 from django.views.decorators.csrf import csrf_exempt
 
-
+@csrf_exempt
 def Userlogout(request):
     logout(request)
     messages.info(request, "You have successfully logged out.")
@@ -28,10 +28,9 @@ def Userlogin(request):
 @csrf_exempt
 def authenticate_login(request):
     data = {"status": "Login gagal.", "success": False}
-    print("masuk")
     if request.method == "POST":
         print(request.body)
-        print("masuk")
+
         user_data = json.loads(request.body)
         username = user_data['username']
         password = user_data['password']
@@ -40,7 +39,7 @@ def authenticate_login(request):
             data['user_id'] = user.pk
             data['status'] = "Login berhasil."
             data['success'] = True
-    print(data)
+
     return JsonResponse(data)
 
 
@@ -56,7 +55,6 @@ def UserRegister(request):
         # form = UserRegistrationForm(request.POST)
         # password = request.POST.get('password1')
         # re_password = request.POST.get('password2')
-        print(register_data)
         if form.is_valid():
             # user = form.save()
             form.save()
@@ -65,6 +63,7 @@ def UserRegister(request):
             # return redirect('/login/')
             data['status'] = "Registrasi berhasil."
             data['success'] = True
+
     return JsonResponse(data)
 
     #     if(password != re_password):
