@@ -45,9 +45,12 @@ INSTALLED_APPS = [
     'user',
     'about',
     'swab_vaksin',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -56,6 +59,20 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_CREDENTIALS = True
+
+CORS_ALLOW_METHODS = [
+    '*',
+]
+
+CORS_ALLOW_HEADERS = [
+    '*',
+]
+
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_HTTPONLY = True
 
 ROOT_URLCONF = 'project_pbp.urls'
 

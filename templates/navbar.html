@@ -8,8 +8,9 @@
         </div>
         <div class="d-flex flex-col align-items-center">
             <div class="opt">
-                Swab & Vaksin
+                <div onClick="redirects('swab-vaksin')"> Swab & Vaksin </div>
             </div>
+            
             <div class="opt">
                 <div onClick="redirects('about')"> About </div>
             </div>
@@ -36,16 +37,19 @@
             console.log(window.location.host)
             switch (params) {
                 case "about":
-                window.location = `http://${window.location.host}/about`
+                    window.location = `http://${window.location.host}/about`
                     break;
                 case "lokasi":
-                window.location = `http://${window.location.host}/lokasi`
+                    window.location = `http://${window.location.host}/lokasi`
                     break;
                 case "logout":
-                window.location = `http://${window.location.host}/logout`
+                    window.location = `http://${window.location.host}/logout`
                     break;
                 case "login":
-                window.location = `http://${window.location.host}/login`
+                    window.location = `http://${window.location.host}/login`
+                    break;
+                case "swab-vaksin":
+                    window.location = `http://${window.location.host}/swab-vaksin`
                     break;
             }
         }
