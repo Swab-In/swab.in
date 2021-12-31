@@ -79,23 +79,13 @@ def json(request):
 @csrf_exempt
 def add_post(request):
     newData = json.loads(request.body.decode('utf-8'))
-
-    users = get_user_model().objects.all()
-    for j in users:
-        if j.username == newData["writer"]:
-            get_writer = j
-
-    obj = Post.objects.all()
-    for i in obj:
-        if i.pk == newData["post_id"]:
-            get_post = i
-
+    
     new_post = Post(
         lokasi = newData['lokasi'],
         detail = newData['detail'],
         date_posted = models.DateTimeField(default=timezone.now),
-        lokasi_pic = '',
-        author = get_writer)
+        lokasi_pic = "",
+        author = newData['author'])
 
     new_post.save()
     return JsonResponse({"instance": "Post Saved"}, status=200)
