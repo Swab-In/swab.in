@@ -1,12 +1,16 @@
 from django.contrib.auth.models import User
-from django.http.response import HttpResponse
+from django.contrib.auth import get_user_model
+from django.http.response import HttpResponse, JsonResponse
 from django.core import serializers
 from django.shortcuts import render
 from django.views.generic.edit import FormMixin
 from .models import *
 from .forms import *
 from django.views.generic import *
+from django.views.decorators.csrf import csrf_exempt
+import json 
 
+@csrf_exempt
 def index(request):
     swabInformations = SwabInformation.objects.all()
     vaksinInformations = VaksinInformation.objects.all()
@@ -83,10 +87,46 @@ class InfoDetailVaksin(DetailView, FormMixin):
         vaksin.save()
         return super(InfoDetailVaksin, self).form_valid(form)
 
+@csrf_exempt
 def jsonVaksin(request):
     data = serializers.serialize('json', VaksinExperience.objects.all())
     return HttpResponse(data, content_type="application/json")
 
+@csrf_exempt
 def jsonSwab(request):
     data = serializers.serialize('json', SwabExperience.objects.all())
     return HttpResponse(data, content_type="application/json")
+
+@csrf_exempt
+def jsonInfoSwab(request):
+    data = serializers.serialize('json', SwabInformation.objects.all())
+    return HttpResponse(data, content_type="application/json")
+
+@csrf_exempt
+def jsonInfoVaksin(request):
+    data = serializers.serialize('json', VaksinInformation.objects.all())
+    return HttpResponse(data, content_type="application/json")
+
+@csrf_exempt
+def addExperience(request):
+    newData = json.loads(request.body.decode('utf-8'))
+    print(newData)
+
+    users = get_user_model().objects.all()
+    for u in users:
+        if u.username == newData["penulis"]:
+            get_writer = u
+
+    obj = SwabInformation.objects.all()
+    for i in obj:
+        if i.pk == newData["swab_id"]:
+            get_exp = i
+
+    new_exp = SwabExperience(
+        swab_id = get_exp,
+        penulis = get_writer,
+        pengalamanSwab = newData['pengalamanSwab'],
+    )
+
+    new_exp.save()
+    return JsonResponse({"instance": "Forum Disimpan"}, status=200)
