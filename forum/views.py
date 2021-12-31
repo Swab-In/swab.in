@@ -60,8 +60,9 @@ def json_req(request):
 
 @csrf_exempt
 def forum_content(request):
+    pk = int(request.headers['Pk'])
     res = []
-    obj = Forum.objects.filter(pk=1)
+    obj = Forum.objects.filter(pk=pk)
     for i in obj:
         print(i.writer)
         res.append({
@@ -90,17 +91,27 @@ def komentar_post(request):
 
     User = get_user_model()
 
-    users = User.objects.filter(id=user_id)[0]
+    users = User.objects.filter(id=user_id)[0] 
     
     komentar = Komentar.objects.create(forum_id = forum, komentar=comment, user_id = users)
     komentar.save()
 
-    return HttpResponse(status=201)
+    res = []
+    print(komentar.komentar)
+    res.append({
+            "komentar" : komentar.komentar,
+            "user_id" : komentar.user_id.username,
+        })
+
+    res = json.dumps(res)
+
+    return HttpResponse(res, content_type='application/json', status=201)
 
 @csrf_exempt
 def all_komentar(request):
-
-    komen = Komentar.objects.filter(forum_id=1)
+    # print(int(request.headers['Pk']))
+    pk = int(request.headers['Pk'])
+    komen = Komentar.objects.filter(forum_id=pk)
 
     res = []
 
