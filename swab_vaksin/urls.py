@@ -10,5 +10,6 @@ urlpatterns = [
     path('json-vaksin', jsonVaksin, name='json-vaksin'),
     path('json-info-vaksin', jsonInfoVaksin, name='json-info-vaksin'),
     path('json-info-swab', jsonInfoSwab, name='json-info-swab'),
-    path('add-experience', addExperience, name='add-experience'),
+    path('add-experience-vaksin', addExperienceVaksin, name='add-experience-vaksin'),
+    path('add-experience-swab', addExperienceSwab, name='add-experience-swab'),
 ]
