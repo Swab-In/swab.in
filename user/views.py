@@ -8,13 +8,16 @@ from .forms import UserRegistrationForm
 from django.contrib import messages
 from django.http import JsonResponse
 import json
+from django.views.decorators.csrf import csrf_exempt
 
+@csrf_exempt
 def Userlogout(request):
     logout(request)
     messages.info(request, "You have successfully logged out.")
     return redirect("/")
 
 
+@csrf_exempt
 def Userlogin(request):
     if request.user.is_authenticated:
         return redirect("/")
@@ -22,41 +25,48 @@ def Userlogin(request):
     return render(request, "login.html")
 
 
+@csrf_exempt
 def authenticate_login(request):
-    response = {}
-    response['status'] = "Invalid Credential"
-    form = AuthenticationForm(request, data=request.POST)
+    data = {"status": "Login gagal.", "success": False}
     if request.method == "POST":
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                login(request, user)
-                messages.success(request, 'User Login Success!')
-                response['status'] = "User Login Success"
-        else:
-            response['status'] = "Invalid Credential"
+        print(request.body)
 
-    return JsonResponse(response)
+        user_data = json.loads(request.body)
+        username = user_data['username']
+        password = user_data['password']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            data['user_id'] = user.pk
+            data['status'] = "Login berhasil."
+            data['success'] = True
+
+    return JsonResponse(data)
 
 
+@csrf_exempt
 def UserRegister(request):
-    response = {}
+    data = {"status": "Registrasi gagal.", "success": False}
+    # response = {}
     if request.user.is_authenticated:
         return redirect("/")
     if request.method == "POST":
-        form = UserRegistrationForm(request.POST)
-        password = request.POST.get('password1')
-        re_password = request.POST.get('password2')
-
+        register_data = json.loads(request.body)
+        form = UserRegistrationForm(register_data)
+        # form = UserRegistrationForm(request.POST)
+        # password = request.POST.get('password1')
+        # re_password = request.POST.get('password2')
         if form.is_valid():
-            user = form.save()
-            login(request, user)
-            messages.success(request, 'Selamat user berhasil dibuat!')
-            return redirect('/login/')
+            # user = form.save()
+            form.save()
+            # login(request, user)
+            # messages.success(request, 'Selamat user berhasil dibuat!')
+            # return redirect('/login/')
+            data['status'] = "Registrasi berhasil."
+            data['success'] = True
 
-        if(password != re_password):
-            response['message'] = 'Password tidak cocok.'
+    return JsonResponse(data)
 
-    return render(request, 'register.html', response)
+    #     if(password != re_password):
+    #         response['message'] = 'Password tidak cocok.'
+
+    # return render(request, 'register.html', response)

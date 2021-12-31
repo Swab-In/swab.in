@@ -108,7 +108,7 @@ def jsonInfoVaksin(request):
     return HttpResponse(data, content_type="application/json")
 
 @csrf_exempt
-def addExperience(request):
+def addExperienceSwab(request):
     newData = json.loads(request.body.decode('utf-8'))
     print(newData)
 
@@ -126,6 +126,30 @@ def addExperience(request):
         swab_id = get_exp,
         penulis = get_writer,
         pengalamanSwab = newData['pengalamanSwab'],
+    )
+
+    new_exp.save()
+    return JsonResponse({"instance": "Forum Disimpan"}, status=200)
+
+@csrf_exempt
+def addExperienceVaksin(request):
+    newData = json.loads(request.body.decode('utf-8'))
+    print(newData)
+
+    users = get_user_model().objects.all()
+    for u in users:
+        if u.username == newData["penulis"]:
+            get_writer = u
+
+    obj = VaksinInformation.objects.all()
+    for i in obj:
+        if i.pk == newData["vaksin_id"]:
+            get_exp = i
+
+    new_exp = VaksinExperience(
+        vaksin_id = get_exp,
+        penulis = get_writer,
+        pengalamanVaksin = newData['pengalamanVaksin'],
     )
 
     new_exp.save()

@@ -12,4 +12,7 @@ urlpatterns = [
     path('json_forum', json_forum, name="json_forum"),
     path('add_forum', add_forum, name='add_forum'),
     path('json_lokasi', json_lokasi, name='json_lokasi'),
+    path('forum_content', forum_content, name="forum_content"),
+    path('komentar_post', komentar_post, name="post_komentar"),
+    path('get_komentar', all_komentar, name="all_komentar"),
 ]

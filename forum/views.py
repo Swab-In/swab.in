@@ -2,8 +2,7 @@ from django.contrib.auth import get_user_model
 from django.shortcuts import render
 
 from .models import Forum, Komentar
-from .forms import ForumForm
-from django.http import HttpResponseRedirect
+from artikel.models import Post as P
 from django.views.generic import ListView, DetailView
 from django.core import serializers
 from django.http.response import HttpResponse, JsonResponse
@@ -12,7 +11,8 @@ from django.views.generic.edit import FormMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
-import json 
+import json
+from django.contrib.auth import get_user_model
 
 def index(request):
     return render(request, 'forum/list_forum.html')
@@ -55,41 +55,76 @@ class ForumDetail(DetailView, FormMixin, LoginRequiredMixin):
 
 @csrf_exempt
 def json_req(request):
-    # id = request.GET.get('id')
-    # print(id)
-    data = serializers.serialize('json', Komentar.objects.all())
+    id = request.GET.get('id')
+    print(id)
+    data = serializers.serialize('json', Komentar.objects.filter(pk=id))
     return HttpResponse(data, content_type="application/json")
 
 @csrf_exempt
-def json_forum(request):
-    data = serializers.serialize('json', Forum.objects.all())
-    return HttpResponse(data, content_type="application/json")
-
-@csrf_exempt
-def json_lokasi(request):
-    data = serializers.serialize('json', Post.objects.all())
-    return HttpResponse(data, content_type="application/json")
-
-@csrf_exempt
-def add_forum(request):
-    newData = json.loads(request.body.decode('utf-8'))
-
-    users = get_user_model().objects.all()
-    for j in users:
-        if j.username == newData["writer"]:
-            get_writer = j
-
-    obj = Post.objects.all()
+def forum_content(request):
+    pk = int(request.headers['Pk'])
+    res = []
+    obj = Forum.objects.filter(pk=pk)
     for i in obj:
-        if i.pk == newData["post_id"]:
-            get_post = i
+        print(i.writer)
+        res.append({
+            "writer" : i.writer.username,
+            "title" : i.title,
+            "content" : i.message,
+            "image" : i.image,
 
-    new_forum = Forum(
-        title = newData['title'],
-        message = newData['message'],
-        image = newData['image'],
-        writer = get_writer,
-        post_id = get_post)
+        })
+    res = json.dumps(res)
 
-    new_forum.save()
-    return JsonResponse({"instance": "Forum Disimpan"}, status=200)
+
+    return HttpResponse(res, content_type='application/json')
+
+@csrf_exempt
+def komentar_post(request):
+    body_unicode = request.body.decode('utf-8')
+
+    body = json.loads(body_unicode)
+
+    comment = body['komentar']
+    forum_id = body['forumId']
+    user_id = body['userId']
+
+    forum = Forum.objects.filter(pk=forum_id)[0]
+
+    User = get_user_model()
+
+    users = User.objects.filter(id=user_id)[0] 
+    
+    komentar = Komentar.objects.create(forum_id = forum, komentar=comment, user_id = users)
+    komentar.save()
+
+    res = []
+    print(komentar.komentar)
+    res.append({
+            "komentar" : komentar.komentar,
+            "user_id" : komentar.user_id.username,
+        })
+
+    res = json.dumps(res)
+
+    return HttpResponse(res, content_type='application/json', status=201)
+
+@csrf_exempt
+def all_komentar(request):
+    # print(int(request.headers['Pk']))
+    pk = int(request.headers['Pk'])
+    komen = Komentar.objects.filter(forum_id=pk)
+
+    res = []
+
+    for i in komen:
+        res.append({
+            "komentar" : i.komentar,
+            "user_id" : i.user_id.username,
+        })
+
+    res = json.dumps(res)
+
+    return HttpResponse(res, content_type='application/json')
+
+
