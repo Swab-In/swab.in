@@ -65,6 +65,6 @@ class PostCreateView(CreateView, LoginRequiredMixin):
         return super().form_valid(form)
 
 def json(request):
-        id = request.GET.get('id')
-        data = serializers.serialize('json', Post.objects.filter(pk=int(id)))
-        return HttpResponse(data, content_type="application/json")
+    id = request.GET.get('id')
+    data = serializers.serialize('json', Post.objects.filter(pk=int(id)))
+    return HttpResponse(data, content_type="application/json")

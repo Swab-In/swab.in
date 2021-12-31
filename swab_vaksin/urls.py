@@ -7,5 +7,8 @@ urlpatterns = [
     path('informasi-swab/<int:pk>', InfoDetailSwab.as_view(), name='informasi-swab'),
     path('informasi-vaksin/<int:pk>', InfoDetailVaksin.as_view(), name='informasi-vaksin'),
     path('json-swab', jsonSwab, name='json-swab'),
-    path('json-vaksin', jsonVaksin, name='json-vaksin')
+    path('json-vaksin', jsonVaksin, name='json-vaksin'),
+    path('json-info-vaksin', jsonInfoVaksin, name='json-info-vaksin'),
+    path('json-info-swab', jsonInfoSwab, name='json-info-swab'),
+    path('add-experience', addExperience, name='add-experience'),
 ]

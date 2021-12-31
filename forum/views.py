@@ -1,9 +1,11 @@
+from django.contrib.auth import get_user_model
 from django.shortcuts import render
+
 from .models import Forum, Komentar
 from artikel.models import Post as P
 from django.views.generic import ListView, DetailView
 from django.core import serializers
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse, JsonResponse
 from .forms import *
 from django.views.generic.edit import FormMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -126,4 +128,12 @@ def all_komentar(request):
     return HttpResponse(res, content_type='application/json')
 
 
+    new_forum = Forum(
+        title = newData['title'],
+        message = newData['message'],
+        image = newData['image'],
+        writer = get_writer,
+        post_id = get_post)
 
+    new_forum.save()
+    return JsonResponse({"instance": "Forum Disimpan"}, status=200)
