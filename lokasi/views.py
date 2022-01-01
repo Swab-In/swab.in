@@ -1,3 +1,5 @@
+from datetime import timezone
+from django.contrib.auth import get_user_model
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
@@ -11,10 +13,13 @@ from django.views.generic.edit import FormMixin
 from .models import Post
 from forum.models import Forum
 from forum.forms import ForumForm
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse, JsonResponse
 from django.core import serializers
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
+import json
+
+from lokasi import models 
 
 class PostListView(ListView):
     model = Post
@@ -69,4 +74,19 @@ class PostCreateView(CreateView, LoginRequiredMixin):
 def json(request):
     id = request.GET.get('id')
     data = serializers.serialize('json', Post.objects.filter(pk=int(id)))
+    # data = serializers.serialize('json', Post.objects.all())
     return HttpResponse(data, content_type="application/json")
+
+@csrf_exempt
+def add_post(request):
+    newData = json.loads(request.body.decode('utf-8'))
+    
+    new_post = Post(
+        lokasi = newData['lokasi'],
+        detail = newData['detail'],
+        date_posted = models.DateTimeField(default=timezone.now),
+        lokasi_pic = "",
+        author = newData['author'])
+
+    new_post.save()
+    return JsonResponse({"instance": "Post Saved"}, status=200)
