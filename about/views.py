@@ -42,11 +42,28 @@ def pesan_post(request):
     no_hp = body['no_hp']
     message = body['message']
 
-    pesan = Pesan.objects.create(first, last, email, no_hp, message)
+    print(first)
+    pesan = Pesan.objects.create(first=first, last=last, email=email, no_hp=no_hp, message=message)
     pesan.save()
 
     return HttpResponse(pesan, content_type="application/json", status=201)
 
+@csrf_exempt
+def semua_pesan(request):
+    pesan = Pesan.objects.all
+
+    res = []
+    for i in pesan:
+        res.append({
+            "first" : i.first,
+            "last" : i.last,
+            "email" : i.email,
+            "no_hp" : i.no_hp,
+            "message" : i.message,
+        })
+    res = json.dumps(res)
+
+    return HttpResponse(res, content_type="application/json")
 
 
 
