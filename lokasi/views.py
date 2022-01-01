@@ -14,6 +14,7 @@ from forum.forms import ForumForm
 from django.http.response import HttpResponse
 from django.core import serializers
 from django.contrib.auth.models import User
+from django.views.decorators.csrf import csrf_exempt
 
 class PostListView(ListView):
     model = Post
@@ -64,6 +65,7 @@ class PostCreateView(CreateView, LoginRequiredMixin):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+# ini buat django ya
 def json(request):
     id = request.GET.get('id')
     data = serializers.serialize('json', Post.objects.filter(pk=int(id)))
