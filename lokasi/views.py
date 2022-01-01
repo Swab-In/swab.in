@@ -70,10 +70,11 @@ class PostCreateView(CreateView, LoginRequiredMixin):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+# ini buat django ya
 def json(request):
     id = request.GET.get('id')
-    # data = serializers.serialize('json', Post.objects.filter(pk=int(id)))
-    data = serializers.serialize('json', Post.objects.all())
+    data = serializers.serialize('json', Post.objects.filter(pk=int(id)))
+    # data = serializers.serialize('json', Post.objects.all())
     return HttpResponse(data, content_type="application/json")
 
 @csrf_exempt
